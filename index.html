@@ -593,7 +593,7 @@ function majUI() {
   const munEntries = Object.entries(G.munitions);
   if(munEntries.length) {
     munEl.innerHTML = munEntries.map(([arme,nb]) =>
-      `<div class="munition-row"><span class="munition-arme">${arme}</span><span class="munition-count${nb<=3?' bas':''}">${nb}</span></div>`
+      `<div class="munition-row" title="${arme}"><span class="munition-arme">${arme}</span><span class="munition-count${nb<=3?' bas':''}" title="${nb<=3?'⚠ Munitions critiques':''}">×${nb}</span></div>`
     ).join('');
   } else {
     munEl.innerHTML = '<div class="inv-vide">Aucune arme</div>';
@@ -792,14 +792,14 @@ function parseResp(texte) {
   });
 
   // Inventaire — ajout
-  texte = texte.replace(/\[\s*([^\]]+?)\s*ajoutée?\s*à\s*l['']inventaire\s*\]/gi, (_,it) => {
+  texte = texte.replace(/\[\s*([^\]]+?)\s*ajoutée?s?\s*à\s*l.inventaire\s*\]/gi, (_,it) => {
     const item = it.trim();
     if(!G.inventaire.includes(item)) G.inventaire.push(item);
     upd.push(`[+${item}]`); return '';
   });
 
   // Inventaire — retrait
-  texte = texte.replace(/\[\s*([^\]]+?)\s*retiré[e]?\s*de\s*l['']inventaire\s*\]/gi, (_,it) => {
+  texte = texte.replace(/\[\s*([^\]]+?)\s*retirée?s?\s*de\s*l.inventaire\s*\]/gi, (_,it) => {
     const item = it.trim();
     G.inventaire = G.inventaire.filter(i => i.toLowerCase()!==item.toLowerCase());
     upd.push(`[-${item}]`); return '';
