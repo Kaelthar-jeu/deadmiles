@@ -728,7 +728,15 @@ Narration (120-180 mots)
 [ CHOIX ]
 1 — option
 2 — option
-3 — option`.trim();
+3 — option
+
+=== RÈGLE ABSOLUE SUR LES CHOIX ===
+AVANT de proposer un choix, vérifie l'inventaire du joueur.
+INTERDIT de proposer : "Boire de l'eau" si aucune eau dans l'inventaire. "Manger" si aucune nourriture dans l'inventaire. "Utiliser [objet]" si cet objet n'est pas dans l'inventaire.
+Les choix doivent refléter EXACTEMENT ce que le joueur possède réellement.
+Un choix qui utilise un objet absent de l'inventaire brise l'immersion — c'est une faute grave.
+Si le joueur n'a pas d'eau : propose de chercher de l'eau, pas de boire.
+Si le joueur n'a pas de nourriture : propose de fouiller, pas de manger.`.trim();
 }
 
 // ══════════════════════════════════════════
