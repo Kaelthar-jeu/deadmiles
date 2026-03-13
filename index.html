@@ -505,9 +505,16 @@ function reprendrePartie() {
   } else {
     afficherEcran('app');
     majUI();
+    const story = document.getElementById('story');
     const dernier = G.historique.filter(m => m.role === 'assistant').pop();
-    if(dernier) traiterReponse(dernier.content);
-    else envoyerMessage(`Je reprends. Je suis ${G.joueur.prenom}, vétéran, à ${G.lieu}. Résume où j'en suis et propose mes choix.`);
+    if(dernier) {
+      const entry = document.createElement('div');
+      entry.className = 'story-entry';
+      story.appendChild(entry);
+      entry.innerHTML = parseResp(dernier.content);
+    } else {
+      envoyerMessage(`Je reprends. Je suis ${G.joueur.prenom}, vétéran, à ${G.lieu}. Résume où j'en suis et propose mes choix.`);
+    }
   }
 }
 
