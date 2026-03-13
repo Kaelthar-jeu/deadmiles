@@ -755,10 +755,17 @@ function parseResp(texte) {
     setTimeout(() => triggerDeath(cause), 600);
   }
 
-  // Munitions — arme
+  // Munitions — arme AVEC munitions
   texte = texte.replace(/\[\s*Arme\s*:\s*([^\|]+)\s*\|\s*Munitions\s*:\s*(\d+)\s*\]/gi, (_,arme,nb) => {
     const a = arme.trim(); G.munitions[a] = parseInt(nb);
     upd.push(`[${a} x${nb}]`); return '';
+  });
+
+  // Arme SANS munitions (couteau, arme de mêlée) → inventaire
+  texte = texte.replace(/\[\s*Arme\s*:\s*([^\|\]]+)\s*\]/gi, (_,arme) => {
+    const a = arme.trim();
+    if(!G.inventaire.includes(a)) G.inventaire.push(a);
+    upd.push(`[+${a}]`); return '';
   });
 
   // Munitions — usage/ajout
