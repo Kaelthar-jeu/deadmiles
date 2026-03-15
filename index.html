@@ -821,8 +821,8 @@ function parseResp(texte) {
   });
 
   // Paywall
-  G.progression.nbChoix = (G.progression.nbChoix||0) + 1;
-  if(!G.progression.abonne && G.progression.nbChoix >= 20) {
+  if(!G.progression.adminMode) G.progression.nbChoix = (G.progression.nbChoix||0) + 1;
+  if(!G.progression.abonne && !G.progression.adminMode && G.progression.nbChoix >= 20) {
     G.progression.extraitTermine = true;
     setTimeout(() => {
       document.getElementById('screen-paywall').style.display = 'flex';
@@ -1010,7 +1010,22 @@ async function validerCode() {
   try {
     const res = await fetch(API_CODES_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({code})});
     const data = await res.json();
-    if(data.valide){
+    if(data.valid||data.valide){
+      // Mode admin — aucune limite
+      if(data.admin){
+        G.progression.abonne=true;
+        G.progression.adminMode=true;
+        G.progression.nbChoix=0;
+        document.getElementById('screen-paywall').style.display='none';
+        document.getElementById('code-overlay')?.remove();
+        autoSave();
+        if(document.getElementById('app').style.display==='none'){
+          afficherEcran('app');majUI();
+          envoyerMessage("Le joueur vient d'activer l'accès admin. Continue l'histoire.");
+        }
+        if(msgEl)msgEl.textContent='✓ Accès admin activé. Aucune limite.';
+        return;
+      }
       G.progression.abonne=true;
       G.progression.codeAbonnement=code;
       G.progression.abonneJusquau=data.expire_le;
