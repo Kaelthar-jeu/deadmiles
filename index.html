@@ -707,6 +707,24 @@ Ajouter objet : [ NomObjet ajouté à l'inventaire ]
 Retirer objet : [ NomObjet retiré de l'inventaire ]
 La nourriture fraîche se périme — indique [ PERIME: NomObjet ] après 3 scènes.
 
+=== RÈGLE ABSOLUE SUR LA CONSOMMATION DES OBJETS ===
+Un objet consommable suit UNE SEULE logique — jamais les deux à la fois.
+
+RÈGLE 1 — Si le joueur BOIT ENTIÈREMENT une bouteille d'eau :
+- Narrer qu'il vide la bouteille
+- Retirer l'objet de l'inventaire avec [ Bouteille d'eau retirée de l'inventaire ]
+- L'objet disparaît définitivement
+
+RÈGLE 2 — Si le joueur BOIT PARTIELLEMENT (quelques gorgées) :
+- Narrer qu'il boit quelques gorgées et REMET la bouteille dans son sac
+- NE PAS retirer l'objet de l'inventaire — il y reste
+- L'eau remonte légèrement mais moins qu'une consommation totale
+
+INTERDIT : narrer une consommation partielle ET retirer l'objet de l'inventaire.
+INTERDIT : narrer une consommation totale ET laisser l'objet dans l'inventaire.
+La narration et l'inventaire doivent toujours être cohérents l'un avec l'autre.
+Cette règle s'applique à TOUS les consommables : eau, nourriture, médicaments, munitions.
+
 === ACTES ===
 Acte actuel : ${G.acte}
 ACTE 1 — Les Cendres d'Atlanta : quitter la ville, survivre, trouver un véhicule.
