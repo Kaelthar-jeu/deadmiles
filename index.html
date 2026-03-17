@@ -434,7 +434,10 @@ let G = {
   progression: { nbChoix: 0, abonne: false },
   historique: [],
   enCours: false,
-  saveTO: null
+  saveTO: null,
+  etatCritique: false,   // true = phase critique (faim/eau/sante = 0)
+  toursCritiques: 0,     // compteur de tours en état critique
+  checkpoint: null       // dernier état sauvegardé avant état critique
 };
 
 // ══════════════════════════════════════════
@@ -693,7 +696,10 @@ RÈGLES RESSOURCES — OBLIGATION ABSOLUE :
 - Si Eau <= 15 et aucune eau : URGENCE — propose un choix pour trouver de l'eau.
 - Si Santé <= 15 : propose un choix pour se soigner.
 - Si Moral <= 20 : narration plus sombre, hallucinations possibles.
-- Si Santé/Faim/Eau <= 0 : mort du personnage.
+- Si Faim ou Eau ou Santé <= 0 : NE PAS tuer le personnage immédiatement. Le joueur entre en ÉTAT CRITIQUE.
+- ÉTAT CRITIQUE (${G.etatCritique ? 'ACTIF — tour ' + G.toursCritiques + '/3' : 'inactif'}) : décrire vertiges, faiblesse extrême, vision trouble, difficulté à agir. Le corps se dégrade. Chaque choix doit refléter cet état physique.
+- Si état critique actif depuis 3 tours sans remède : la mort est déclenchée côté système. Ne pas l'annoncer dans la narration, continuer normalement.
+- La mort arrive uniquement après 3 tours sans que le joueur ait mangé/bu/soigné.
 
 === MUNITIONS ===
 Les munitions se gèrent par type d'arme. Formats :
@@ -775,10 +781,40 @@ function parseResp(texte) {
     });
   });
 
-  // Mort
-  if(G.survie.sante<=0 || G.survie.faim<=0 || G.survie.eau<=0) {
-    const cause = G.survie.sante<=0?'blessures':G.survie.faim<=0?'famine':'déshydratation';
-    setTimeout(() => triggerDeath(cause), 600);
+  // Système mort en 2 phases
+  const enDanger = G.survie.sante<=0 || G.survie.faim<=0 || G.survie.eau<=0;
+  if(enDanger) {
+    if(!G.etatCritique) {
+      // PHASE 1 : entrée en état critique — sauvegarder checkpoint
+      G.etatCritique = true;
+      G.toursCritiques = 0;
+      G.checkpoint = JSON.parse(JSON.stringify({
+        survie: { sante: Math.max(5, G.survie.sante), faim: Math.max(5, G.survie.faim), eau: Math.max(5, G.survie.eau), moral: G.survie.moral },
+        inventaire: [...G.inventaire],
+        munitions: Object.assign({}, G.munitions),
+        acte: G.acte, lieu: G.lieu,
+        historique: G.historique.slice(-6)
+      }));
+    } else {
+      G.toursCritiques++;
+      if(G.toursCritiques >= 3) {
+        // PHASE 2 : mort après 3 tours sans remède
+        const cause = G.survie.sante<=0?'blessures':G.survie.faim<=0?'famine':'déshydratation';
+        setTimeout(() => triggerDeath(cause), 600);
+      }
+    }
+  } else {
+    // Hors danger : réinitialiser état critique
+    G.etatCritique = false;
+    G.toursCritiques = 0;
+    // Sauvegarder un nouveau checkpoint propre
+    G.checkpoint = JSON.parse(JSON.stringify({
+      survie: Object.assign({}, G.survie),
+      inventaire: [...G.inventaire],
+      munitions: Object.assign({}, G.munitions),
+      acte: G.acte, lieu: G.lieu,
+      historique: G.historique.slice(-6)
+    }));
   }
 
   // Munitions — arme AVEC munitions
@@ -873,24 +909,57 @@ function parseResp(texte) {
 // MORT
 // ══════════════════════════════════════════
 function triggerDeath(cause) {
-  G.survie = { sante:20, faim:25, eau:20, moral:30 };
-  G.inventaire = G.inventaire.slice(Math.floor(G.inventaire.length/2));
+  G.etatCritique = false;
+  G.toursCritiques = 0;
+
+  // Retour au checkpoint si disponible, sinon état minimal
+  if(G.checkpoint) {
+    G.survie = Object.assign({}, G.checkpoint.survie);
+    G.inventaire = [...G.checkpoint.inventaire];
+    G.munitions = Object.assign({}, G.checkpoint.munitions);
+    G.acte = G.checkpoint.acte;
+    G.lieu = G.checkpoint.lieu;
+    G.historique = [...G.checkpoint.historique];
+    G.checkpoint = null;
+  } else {
+    G.survie = { sante: 20, faim: 20, eau: 20, moral: 25 };
+    G.inventaire = G.inventaire.slice(Math.floor(G.inventaire.length / 2));
+  }
+
   majUI();
+
   const story = document.getElementById('story');
-  const entries = story.querySelectorAll('.story-entry');
-  if(entries.length > 0) entries[entries.length-1].remove();
   const entry = document.createElement('div');
   entry.className = 'story-entry';
-  entry.style.borderLeft = '3px solid var(--rouge-vif)';
-  entry.style.paddingLeft = '16px';
+  entry.style.cssText = 'border-left:3px solid var(--rouge-vif);padding-left:16px;';
+  const causeTexte = cause==='blessures'
+    ? 'Vos blessures ont eu raison de vous.'
+    : cause==='famine'
+    ? 'La faim vous a vidé de l'intérieur. Votre corps a lâché.'
+    : 'La déshydratation a eu le dernier mot. Vision noire, puis rien.';
   entry.innerHTML = `
-    <p style="color:var(--rouge-vif);font-size:18px;font-weight:bold;letter-spacing:3px;font-family:var(--font);">✖ VOUS ÊTES MORT</p>
-    <p><em>Cause : ${cause==='blessures'?"Vos blessures ont eu le dernier mot.":cause==='famine'?"La faim vous a vidé de l'intérieur.":"Trois jours sans eau. Le corps lâche avant l'esprit."}</em></p>
-    <p><em>Vous vous réveillez. Affaibli. Diminué. Mais vivant. La route attend.</em></p>
-    <p style="color:var(--or-clair);font-size:11px;">[ Ressources critiques ] [ Objets perdus ] [ La route continue ]</p>`;
+    <p style="color:var(--rouge-vif);font-size:17px;font-weight:bold;letter-spacing:3px;font-family:var(--font);">✖ MORT</p>
+    <p><em>${causeTexte}</em></p>
+    <p style="color:var(--or-clair);font-size:13px;margin-top:12px;">Retour au dernier point de sauvegarde.</p>
+    <div style="margin-top:16px;">
+      <button class="choix-btn" onclick="reprendreDepuisCheckpoint()">↩ Reprendre depuis le dernier checkpoint</button>
+      <button class="choix-btn" style="margin-top:8px;opacity:0.7;" onclick="recommencerPartie()">✕ Recommencer la partie</button>
+    </div>`;
   story.appendChild(entry);
   story.scrollTop = entry.offsetTop - 20;
   autoSave();
+}
+
+function reprendreDepuisCheckpoint() {
+  const story = document.getElementById('story');
+  story.innerHTML = '';
+  majUI();
+  envoyerMessage('Je reprends conscience. Résume brièvement ma situation actuelle — lieu, état physique — et propose-moi mes prochains choix.');
+}
+
+function recommencerPartie() {
+  localStorage.removeItem('dm_save_v1');
+  location.reload();
 }
 
 // ══════════════════════════════════════════
