@@ -935,7 +935,7 @@ function triggerDeath(cause) {
   const causeTexte = cause==='blessures'
     ? 'Vos blessures ont eu raison de vous.'
     : cause==='famine'
-    ? 'La faim vous a vidé de l'intérieur. Votre corps a lâché.'
+    ? "La faim vous a vidé de l'intérieur. Votre corps a lâché."
     : 'La déshydratation a eu le dernier mot. Vision noire, puis rien.';
   entry.innerHTML = `
     <p style="color:var(--rouge-vif);font-size:17px;font-weight:bold;letter-spacing:3px;font-family:var(--font);">✖ MORT</p>
