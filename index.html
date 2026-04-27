@@ -20,7 +20,7 @@
 }
 html,body{height:100%;background:var(--bg);color:var(--texte);font-family:var(--mono);font-size:15px;line-height:1.6;overflow-x:hidden;}
 
-/* ── ÉCRAN INTRO ── */
+/* ── INTRO ── */
 #screen-intro{
   position:fixed;inset:0;background:var(--bg);
   display:flex;flex-direction:column;align-items:center;justify-content:center;
@@ -29,25 +29,14 @@ html,body{height:100%;background:var(--bg);color:var(--texte);font-family:var(--
     radial-gradient(ellipse at 50% 100%, rgba(100,20,10,0.4) 0%, transparent 60%),
     radial-gradient(ellipse at 20% 30%, rgba(60,40,10,0.15) 0%, transparent 50%);
 }
-.intro-grain{
-  position:fixed;inset:0;z-index:201;pointer-events:none;opacity:0.04;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
-  background-size:150px;
-}
+.intro-grain{position:fixed;inset:0;z-index:201;pointer-events:none;opacity:0.04;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");background-size:150px;}
 .intro-inner{max-width:480px;width:100%;text-align:center;position:relative;z-index:202;}
 .intro-studio{font-size:10px;letter-spacing:5px;color:var(--texte-dim);text-transform:uppercase;margin-bottom:48px;animation:fi 1s ease 0.1s both;}
 .intro-titre{font-family:var(--font);font-size:clamp(64px,16vw,110px);color:var(--texte-clair);line-height:0.9;letter-spacing:-2px;text-shadow:0 0 60px rgba(139,26,10,0.4),0 4px 30px rgba(0,0,0,0.9);animation:fi 1s ease 0.3s both;}
 .intro-sous{font-size:10px;letter-spacing:6px;color:var(--rouge-vif);text-transform:uppercase;margin:16px 0 32px;animation:fi 1s ease 0.5s both;}
 .intro-filet{width:1px;height:40px;background:linear-gradient(to bottom,transparent,rgba(139,26,10,0.7),transparent);margin:0 auto 24px;animation:fi 1s ease 0.6s both;}
 .intro-accroche{font-size:13px;color:var(--texte-dim);font-style:italic;line-height:1.8;margin-bottom:48px;animation:fi 1s ease 0.7s both;}
-.btn-intro{
-  background:transparent;border:1px solid rgba(200,42,18,0.4);
-  color:var(--texte-clair);font-family:var(--font);font-size:16px;
-  letter-spacing:3px;padding:16px 48px;cursor:pointer;
-  width:100%;max-width:320px;transition:all 0.3s;
-  position:relative;overflow:hidden;animation:fi 1s ease 0.9s both;
-  text-transform:uppercase;
-}
+.btn-intro{background:transparent;border:1px solid rgba(200,42,18,0.4);color:var(--texte-clair);font-family:var(--font);font-size:16px;letter-spacing:3px;padding:16px 48px;cursor:pointer;width:100%;max-width:320px;transition:all 0.3s;position:relative;overflow:hidden;animation:fi 1s ease 0.9s both;text-transform:uppercase;}
 .btn-intro::before{content:'';position:absolute;inset:0;background:var(--rouge);transform:scaleX(0);transform-origin:left;transition:transform 0.35s ease;z-index:-1;}
 .btn-intro:hover{border-color:var(--rouge-vif);color:#fff;}
 .btn-intro:hover::before{transform:scaleX(1);}
@@ -55,50 +44,29 @@ html,body{height:100%;background:var(--bg);color:var(--texte);font-family:var(--
 .btn-reprendre:hover{color:var(--texte);}
 @keyframes fi{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
 
-/* ── ÉCRAN SETUP ── */
-#screen-setup{
-  display:none;position:fixed;inset:0;background:var(--bg);z-index:200;
-  overflow-y:auto;padding:40px 20px;
-}
+/* ── SETUP ── */
+#screen-setup{display:none;position:fixed;inset:0;background:var(--bg);z-index:200;overflow-y:auto;padding:40px 20px;}
 .setup-inner{max-width:500px;margin:0 auto;}
 .setup-titre{font-family:var(--font);font-size:28px;color:var(--texte-clair);margin-bottom:6px;}
 .setup-sous{font-size:12px;color:var(--texte-dim);font-style:italic;margin-bottom:36px;line-height:1.6;}
 .setup-label{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--texte-dim);margin-bottom:10px;display:block;}
-.setup-input{
-  width:100%;background:var(--bg3);border:1px solid var(--border2);
-  color:var(--texte-clair);font-family:var(--mono);font-size:15px;
-  padding:12px 16px;margin-bottom:24px;outline:none;transition:border-color 0.2s;
-}
+.setup-input{width:100%;background:var(--bg3);border:1px solid var(--border2);color:var(--texte-clair);font-family:var(--mono);font-size:15px;padding:12px 16px;margin-bottom:24px;outline:none;transition:border-color 0.2s;}
 .setup-input:focus{border-color:var(--rouge);}
 .sexe-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:24px;}
-.sexe-card{
-  background:var(--bg3);border:1px solid var(--border2);
-  padding:16px;cursor:pointer;transition:all 0.2s;text-align:center;
-}
+.sexe-card{background:var(--bg3);border:1px solid var(--border2);padding:16px;cursor:pointer;transition:all 0.2s;text-align:center;}
 .sexe-card:hover,.sexe-card.sel{border-color:var(--rouge);background:rgba(139,26,10,0.12);}
 .sexe-card.sel{box-shadow:0 0 12px rgba(139,26,10,0.2);}
 .sexe-nom{font-family:var(--font);font-size:18px;color:var(--texte-clair);margin-bottom:4px;}
 .sexe-desc{font-size:11px;color:var(--texte-dim);font-style:italic;line-height:1.4;}
 .age-display{font-family:var(--font);font-size:24px;color:var(--rouge-vif);text-align:center;margin-bottom:8px;}
 input[type=range]{width:100%;accent-color:var(--rouge);margin-bottom:24px;}
-.btn-setup{
-  width:100%;background:var(--rouge);border:none;color:#fff;
-  font-family:var(--font);font-size:15px;letter-spacing:2px;
-  padding:16px;cursor:pointer;text-transform:uppercase;transition:background 0.2s;
-}
+.btn-setup{width:100%;background:var(--rouge);border:none;color:#fff;font-family:var(--font);font-size:15px;letter-spacing:2px;padding:16px;cursor:pointer;text-transform:uppercase;transition:background 0.2s;}
 .btn-setup:hover{background:var(--rouge-vif);}
-.btn-setup:disabled{background:var(--border2);cursor:not-allowed;}
 
-/* ── LAYOUT PRINCIPAL ── */
+/* ── APP ── */
 #app{display:none;min-height:100vh;max-width:1200px;margin:0 auto;padding:0 12px;}
-.app-header{
-  display:flex;align-items:center;justify-content:space-between;
-  padding:14px 0 12px;border-bottom:1px solid var(--border);
-  position:sticky;top:0;background:var(--bg);z-index:50;
-}
+.app-header{display:flex;align-items:center;justify-content:space-between;padding:14px 0 12px;border-bottom:1px solid var(--border);position:sticky;top:0;background:var(--bg);z-index:50;}
 .app-logo{font-family:var(--font);font-size:22px;color:var(--texte-clair);letter-spacing:4px;}
-
-/* Panneau déroulant */
 .dm-panel-btn{background:none;border:1px solid var(--border);color:var(--texte-dim);font-family:var(--mono);font-size:11px;padding:4px 10px;cursor:pointer;transition:all 0.2s;letter-spacing:1px;}
 .dm-panel-btn:hover{border-color:var(--rouge-vif);color:var(--or-clair);}
 #dm-panel{display:none;background:var(--bg2);border-bottom:1px solid var(--border);padding:12px 0;}
@@ -117,154 +85,70 @@ input[type=range]{width:100%;accent-color:var(--rouge);margin-bottom:24px;}
 .save-ind{font-size:10px;color:var(--texte-dim);font-family:var(--mono);}
 .save-ind.saving{color:var(--or-clair);}
 .save-ind.saved{color:var(--vert-clair);}
-
 .main{display:block;padding:14px 0;min-height:calc(100vh - 60px);}
 
-/* ── PANNEAU STATS ── */
+/* ── STATS ── */
 .stats-panel{display:none;}
 .panel-bloc{background:var(--bg2);border:1px solid var(--border);padding:12px;}
-.panel-titre{
-  font-size:9px;letter-spacing:3px;text-transform:uppercase;
-  color:var(--rouge);border-bottom:1px solid var(--border);
-  padding-bottom:6px;margin-bottom:10px;font-family:var(--mono);
-}
+.panel-titre{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--rouge);border-bottom:1px solid var(--border);padding-bottom:6px;margin-bottom:10px;font-family:var(--mono);}
 .stat-row{display:flex;justify-content:space-between;align-items:center;padding:3px 0;}
 .stat-label{font-size:11px;color:var(--texte-dim);}
 .stat-val{font-size:12px;color:var(--or-clair);font-family:var(--mono);font-weight:bold;}
 .barre-wrap{background:var(--bg4);height:3px;margin-top:3px;overflow:hidden;}
 .barre{height:100%;transition:width 0.5s ease,background 0.5s ease;}
-.barre-sante{background:var(--rouge-vif);}
-.barre-faim{background:var(--or-clair);}
-.barre-eau{background:var(--bleu-clair);}
-.barre-moral{background:var(--vert-clair);}
-
-/* Munitions */
-.munition-row{
-  display:flex;justify-content:space-between;align-items:center;
-  font-size:11px;padding:3px 0;border-bottom:1px solid var(--border);
-}
+.munition-row{display:flex;justify-content:space-between;align-items:center;font-size:11px;padding:3px 0;border-bottom:1px solid var(--border);}
 .munition-row:last-child{border-bottom:none;}
 .munition-arme{color:var(--texte-dim);}
 .munition-count{color:var(--or-clair);font-family:var(--mono);}
 .munition-count.bas{color:var(--rouge-vif);}
-
-/* Inventaire */
-.inv-item{
-  font-size:11px;color:var(--texte-dim);padding:3px 0;
-  border-bottom:1px solid var(--border);cursor:pointer;transition:color 0.2s;
-}
+.inv-item{font-size:11px;color:var(--texte-dim);padding:3px 0;border-bottom:1px solid var(--border);cursor:pointer;transition:color 0.2s;}
 .inv-item:last-child{border-bottom:none;}
 .inv-item:hover{color:var(--texte-clair);}
 .inv-vide{font-size:11px;color:var(--texte-dim);font-style:italic;}
+.acte-display{background:var(--rouge-dim);border-left:3px solid var(--rouge-vif);padding:8px 10px;font-size:11px;color:var(--texte);line-height:1.5;}
 
-/* Acte */
-.acte-display{
-  background:var(--rouge-dim);border-left:3px solid var(--rouge-vif);
-  padding:8px 10px;font-size:11px;color:var(--texte);line-height:1.5;
-}
-
-/* ── PANNEAU JEU ── */
+/* ── JEU ── */
 .game-panel{flex:1;display:flex;flex-direction:column;gap:10px;min-width:0;}
-#story{
-  flex:1;background:var(--bg2);border:1px solid var(--border);
-  padding:20px 24px;overflow-y:auto;min-height:400px;
-  scroll-behavior:smooth;
-}
+#story{flex:1;background:var(--bg2);border:1px solid var(--border);padding:20px 24px;overflow-y:auto;min-height:400px;scroll-behavior:smooth;}
 .story-entry{margin-bottom:20px;animation:fadeIn 0.4s ease;}
 @keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
 .story-entry p{margin-bottom:10px;font-size:15px;line-height:1.85;color:var(--texte);}
-.story-action{
-  font-style:italic;font-size:13px;color:var(--texte-dim);
-  margin-bottom:12px;padding-left:12px;
-  border-left:2px solid var(--border2);
-}
+.story-action{font-style:italic;font-size:13px;color:var(--texte-dim);margin-bottom:12px;padding-left:12px;border-left:2px solid var(--border2);}
 .story-sep{border:none;border-top:1px solid var(--border);margin:16px 0;opacity:0.4;}
-.stat-update{
-  font-family:var(--mono);font-size:11px;color:var(--or-clair);
-  margin-top:8px;padding:5px 10px;
-  background:rgba(154,122,58,0.08);border-left:2px solid var(--or);
-}
-.curseur{
-  display:inline-block;width:2px;height:14px;
-  background:var(--rouge-vif);animation:blink 0.7s infinite;
-  vertical-align:text-bottom;margin-left:2px;
-}
+.stat-update{font-family:var(--mono);font-size:11px;color:var(--or-clair);margin-top:8px;padding:5px 10px;background:rgba(154,122,58,0.08);border-left:2px solid var(--or);}
+.curseur{display:inline-block;width:2px;height:14px;background:var(--rouge-vif);animation:blink 0.7s infinite;vertical-align:text-bottom;margin-left:2px;}
 @keyframes blink{0%,50%{opacity:1;}51%,100%{opacity:0;}}
-
-/* Choix */
-.choix-wrap{
-  margin-top:14px;padding:14px 16px;
-  background:var(--bg3);border:1px solid var(--border2);
-}
-.choix-titre{
-  font-size:9px;letter-spacing:3px;text-transform:uppercase;
-  color:var(--rouge);margin-bottom:10px;font-family:var(--mono);
-}
-.choix-btn{
-  display:block;width:100%;text-align:left;
-  background:none;border:1px solid var(--border);
-  color:var(--texte);font-family:var(--mono);font-size:14px;
-  padding:11px 14px;margin-bottom:8px;cursor:pointer;
-  transition:all 0.2s;line-height:1.5;
-}
+.choix-wrap{margin-top:14px;padding:14px 16px;background:var(--bg3);border:1px solid var(--border2);}
+.choix-titre{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--rouge);margin-bottom:10px;font-family:var(--mono);}
+.choix-btn{display:block;width:100%;text-align:left;background:none;border:1px solid var(--border);color:var(--texte);font-family:var(--mono);font-size:14px;padding:11px 14px;margin-bottom:8px;cursor:pointer;transition:all 0.2s;line-height:1.5;}
 .choix-btn:last-child{margin-bottom:0;}
 .choix-btn:hover{background:rgba(139,26,10,0.15);border-color:var(--rouge);color:var(--texte-clair);}
 .choix-num{color:var(--rouge-vif);margin-right:8px;}
-
-/* Input */
 .input-area{display:flex;gap:8px;flex-shrink:0;}
-#player-input{
-  flex:1;background:var(--bg2);border:1px solid var(--border);
-  color:var(--texte-clair);font-family:var(--mono);font-size:14px;
-  padding:12px 14px;resize:none;height:52px;outline:none;
-  transition:border-color 0.2s;
-}
+#player-input{flex:1;background:var(--bg2);border:1px solid var(--border);color:var(--texte-clair);font-family:var(--mono);font-size:14px;padding:12px 14px;resize:none;height:52px;outline:none;transition:border-color 0.2s;}
 #player-input:focus{border-color:var(--rouge);}
 #player-input::placeholder{color:var(--texte-dim);font-style:italic;}
-#send-btn{
-  background:var(--rouge);border:none;color:#fff;
-  font-family:var(--font);font-size:13px;letter-spacing:1px;
-  padding:0 20px;cursor:pointer;transition:background 0.2s;flex-shrink:0;
-}
+#send-btn{background:var(--rouge);border:none;color:#fff;font-family:var(--font);font-size:13px;letter-spacing:1px;padding:0 20px;cursor:pointer;transition:background 0.2s;flex-shrink:0;}
 #send-btn:hover{background:var(--rouge-vif);}
 #send-btn:disabled{background:var(--border);cursor:not-allowed;}
 
-/* Paywall */
-#screen-paywall{
-  display:none;position:fixed;inset:0;background:var(--bg);z-index:300;
-  align-items:center;justify-content:center;padding:24px;
-}
+/* ── PAYWALL ── */
+#screen-paywall{display:none;position:fixed;inset:0;background:var(--bg);z-index:300;align-items:center;justify-content:center;padding:24px;}
 .paywall-inner{max-width:440px;width:100%;text-align:center;}
-.paywall-badge{
-  display:inline-block;border:1px solid var(--border2);
-  color:var(--texte-dim);font-size:10px;letter-spacing:3px;
-  text-transform:uppercase;padding:5px 14px;margin-bottom:24px;
-}
+.paywall-badge{display:inline-block;border:1px solid var(--border2);color:var(--texte-dim);font-size:10px;letter-spacing:3px;text-transform:uppercase;padding:5px 14px;margin-bottom:24px;}
 .paywall-titre{font-family:var(--font);font-size:clamp(24px,5vw,36px);color:var(--texte-clair);margin-bottom:16px;line-height:1.2;}
 .paywall-texte{font-size:13px;color:var(--texte-dim);line-height:1.7;margin-bottom:28px;}
 .paywall-prix{font-family:var(--font);font-size:48px;color:var(--rouge-vif);margin-bottom:4px;}
 .paywall-prix-label{font-size:12px;color:var(--texte-dim);margin-bottom:24px;}
-.paywall-avantages{
-  text-align:left;background:var(--bg2);border:1px solid var(--border);
-  padding:16px 20px;margin-bottom:24px;
-}
-.paywall-av{
-  font-size:13px;color:var(--texte);padding:5px 0;
-  border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px;
-}
+.paywall-avantages{text-align:left;background:var(--bg2);border:1px solid var(--border);padding:16px 20px;margin-bottom:24px;}
+.paywall-av{font-size:13px;color:var(--texte);padding:5px 0;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px;}
 .paywall-av:last-child{border-bottom:none;}
 .paywall-check{color:var(--rouge-vif);}
-.btn-paywall{
-  width:100%;background:var(--rouge);border:none;color:#fff;
-  font-family:var(--font);font-size:15px;letter-spacing:2px;
-  padding:16px;cursor:pointer;text-transform:uppercase;
-  transition:background 0.2s;margin-bottom:12px;
-}
+.btn-paywall{width:100%;background:var(--rouge);border:none;color:#fff;font-family:var(--font);font-size:15px;letter-spacing:2px;padding:16px;cursor:pointer;text-transform:uppercase;transition:background 0.2s;margin-bottom:12px;}
 .btn-paywall:hover{background:var(--rouge-vif);}
 .paywall-deja{font-size:12px;color:var(--texte-dim);cursor:pointer;text-decoration:underline;text-underline-offset:3px;}
 .paywall-deja:hover{color:var(--texte);}
 
-/* Mobile */
 @media(max-width:680px){
   .main{flex-direction:column;}
   .stats-panel{width:100%;position:static;max-height:none;flex-direction:row;flex-wrap:wrap;gap:8px;}
@@ -281,10 +165,9 @@ input[type=range]{width:100%;accent-color:var(--rouge);margin-bottom:24px;}
 </head>
 <body>
 
-<!-- ══ GRAIN GLOBAL ══ -->
 <div class="intro-grain"></div>
 
-<!-- ══ ÉCRAN INTRO ══ -->
+<!-- INTRO -->
 <div id="screen-intro">
   <div class="intro-inner">
     <div class="intro-studio">Récit Games · Roman Survival Interactif</div>
@@ -301,17 +184,12 @@ input[type=range]{width:100%;accent-color:var(--rouge);margin-bottom:24px;}
   </div>
 </div>
 
-<!-- ══ ÉCRAN SETUP ══ -->
+<!-- SETUP -->
 <div id="screen-setup">
   <div class="setup-inner">
     <div class="setup-titre">Qui êtes-vous ?</div>
     <div class="setup-sous">Vous êtes un vétéran. Revenu d'Afghanistan il y a trois semaines. L'épidémie a commencé pendant votre vol retour. Atlanta est tombée avant que vous touchiez le sol.</div>
-    <label class="setup-label">Ta clé API Anthropic</label>
-    <input class="setup-input" type="password" id="api-key-input" placeholder="sk-ant-api03-..." autocomplete="off"/>
-    <div style="display:flex;align-items:center;gap:8px;margin-top:-16px;margin-bottom:20px;">
-      <input type="checkbox" id="remember-key" style="accent-color:var(--rouge);cursor:pointer;" checked/>
-      <label for="remember-key" style="font-size:11px;color:var(--texte-dim);cursor:pointer;letter-spacing:1px;">Se souvenir sur cet appareil</label>
-    </div>
+
     <label class="setup-label">Votre profil</label>
     <div class="sexe-grid">
       <div class="sexe-card sel" id="card-homme" onclick="choisirSexe('homme',this)">
@@ -332,7 +210,7 @@ input[type=range]{width:100%;accent-color:var(--rouge);margin-bottom:24px;}
   </div>
 </div>
 
-<!-- ══ APP PRINCIPALE ══ -->
+<!-- APP -->
 <div id="app">
   <div style="background:#090807;border-bottom:1px solid var(--border);padding:6px 12px;text-align:center;">
     <a href="https://recitgames.vercel.app" style="color:var(--texte-dim);font-size:10px;text-decoration:none;letter-spacing:3px;font-family:var(--mono);">&#9664; RÉCIT GAMES</a>
@@ -349,14 +227,12 @@ input[type=range]{width:100%;accent-color:var(--rouge);margin-bottom:24px;}
   <!-- Panneau déroulant -->
   <div id="dm-panel">
     <div class="dm-panel-inner">
-
       <div>
         <div class="dm-bloc-title">Survivant</div>
         <div style="font-family:var(--font);font-size:14px;color:var(--texte-clair);" id="dm-nom">—</div>
         <div style="font-size:10px;color:var(--texte-dim);margin-top:2px;" id="dm-profil">Vétéran</div>
         <div style="margin-top:8px;font-size:11px;color:var(--texte-dim);" id="dm-lieu">Atlanta, Géorgie</div>
       </div>
-
       <div>
         <div class="dm-bloc-title">Condition</div>
         <div class="dm-row"><span class="dm-key">❤ Santé</span><span class="dm-val" id="dm-sante">100</span></div>
@@ -368,80 +244,58 @@ input[type=range]{width:100%;accent-color:var(--rouge);margin-bottom:24px;}
         <div class="dm-row" style="margin-top:4px;"><span class="dm-key">◈ Moral</span><span class="dm-val" id="dm-moral">100</span></div>
         <div class="dm-barre-wrap"><div class="dm-barre" id="dm-barre-moral" style="width:100%;background:var(--vert-clair);"></div></div>
       </div>
-
       <div>
         <div class="dm-bloc-title">Munitions</div>
         <div id="dm-munitions"><div class="dm-val" style="font-size:11px;color:var(--texte-dim);">Aucune arme</div></div>
       </div>
-
       <div>
         <div class="dm-bloc-title">Inventaire</div>
         <div id="dm-inventaire"><div style="font-size:11px;color:var(--texte-dim);font-style:italic;">Vide</div></div>
       </div>
-
       <div>
-        <button class="dm-btn-premium" onclick="afficherSaisieCode()">
-          ⚡ Passer Premium — 7€/mois
-        </button>
+        <button class="dm-btn-premium" onclick="afficherSaisieCode()">⚡ Passer Premium — 7€/mois</button>
       </div>
-
     </div>
   </div>
 
   <div class="main">
-
-    <!-- Stats -->
     <div class="stats-panel">
-
       <div class="panel-bloc">
         <div class="panel-titre">Survivant</div>
         <div style="font-family:var(--font);font-size:16px;color:var(--texte-clair);" id="nom-display">—</div>
         <div style="font-size:10px;color:var(--texte-dim);margin-top:2px;" id="profil-display">Vétéran</div>
       </div>
-
       <div class="panel-bloc">
         <div class="panel-titre">Condition</div>
         <div class="stat-row"><span class="stat-label">❤ Santé</span><span class="stat-val" id="sv-sante">100</span></div>
-        <div class="barre-wrap"><div class="barre barre-sante" id="barre-sante" style="width:100%"></div></div>
+        <div class="barre-wrap"><div class="barre" id="barre-sante" style="width:100%;background:var(--rouge-vif);"></div></div>
         <div class="stat-row" style="margin-top:6px;"><span class="stat-label">🍖 Faim</span><span class="stat-val" id="sv-faim">100</span></div>
-        <div class="barre-wrap"><div class="barre barre-faim" id="barre-faim" style="width:100%"></div></div>
+        <div class="barre-wrap"><div class="barre" id="barre-faim" style="width:100%;background:var(--or-clair);"></div></div>
         <div class="stat-row" style="margin-top:6px;"><span class="stat-label">💧 Eau</span><span class="stat-val" id="sv-eau">100</span></div>
-        <div class="barre-wrap"><div class="barre barre-eau" id="barre-eau" style="width:100%"></div></div>
+        <div class="barre-wrap"><div class="barre" id="barre-eau" style="width:100%;background:var(--bleu-clair);"></div></div>
         <div class="stat-row" style="margin-top:6px;"><span class="stat-label">◈ Moral</span><span class="stat-val" id="sv-moral">100</span></div>
-        <div class="barre-wrap"><div class="barre barre-moral" id="barre-moral" style="width:100%"></div></div>
+        <div class="barre-wrap"><div class="barre" id="barre-moral" style="width:100%;background:var(--vert-clair);"></div></div>
       </div>
-
       <div class="panel-bloc">
         <div class="panel-titre">Munitions</div>
-        <div id="munitions-list">
-          <div class="inv-vide">Aucune arme</div>
-        </div>
+        <div id="munitions-list"><div class="inv-vide">Aucune arme</div></div>
       </div>
-
       <div class="panel-bloc">
-        <div class="panel-titre" style="cursor:pointer" onclick="toggleInv()">
-          Inventaire <span id="inv-toggle" style="float:right;color:var(--or-clair);">▼</span>
-        </div>
+        <div class="panel-titre" style="cursor:pointer" onclick="toggleInv()">Inventaire <span id="inv-toggle" style="float:right;color:var(--or-clair);">▼</span></div>
         <div id="inv-list"><div class="inv-vide">Vide</div></div>
-        <div id="inv-detail" style="display:none;margin-top:8px;border-top:1px solid var(--border);padding-top:8px;">
-          <div id="inv-full"></div>
-        </div>
+        <div id="inv-detail" style="display:none;margin-top:8px;border-top:1px solid var(--border);padding-top:8px;"><div id="inv-full"></div></div>
       </div>
-
       <div class="panel-bloc">
         <div class="panel-titre">Situation</div>
         <div class="acte-display" id="lieu-display">Atlanta, Géorgie</div>
       </div>
-
       <div class="panel-bloc" style="padding:0;overflow:hidden;">
         <button onclick="afficherSaisieCode()" style="width:100%;padding:14px 12px;background:linear-gradient(135deg,var(--rouge),var(--rouge-dim));color:#fff;border:none;font-family:var(--font);font-size:13px;font-weight:bold;cursor:pointer;letter-spacing:1px;line-height:1.4;transition:opacity 0.2s;" onmouseover="this.style.opacity=0.85" onmouseout="this.style.opacity=1">
           ⚡ Passer Premium<br><span style="font-size:10px;font-weight:normal;opacity:0.8;">7€ / mois — Récit Games</span>
         </button>
       </div>
-
     </div>
 
-    <!-- Jeu -->
     <div class="game-panel">
       <div id="story"></div>
       <div class="input-area">
@@ -449,12 +303,11 @@ input[type=range]{width:100%;accent-color:var(--rouge);margin-bottom:24px;}
         <button id="send-btn">Agir</button>
       </div>
     </div>
-
   </div>
 </div>
 
-<!-- ══ PAYWALL ══ -->
-<div id="screen-paywall" style="display:none;position:fixed;inset:0;background:var(--bg);z-index:300;display:none;align-items:center;justify-content:center;padding:24px;">
+<!-- PAYWALL -->
+<div id="screen-paywall">
   <div class="paywall-inner">
     <div class="paywall-badge">Fin de l'extrait gratuit</div>
     <div class="paywall-titre">La route continue.<br>Êtes-vous prêt ?</div>
@@ -467,7 +320,7 @@ input[type=range]{width:100%;accent-color:var(--rouge);margin-bottom:24px;}
       <div class="paywall-av"><span class="paywall-check">✦</span> Mises à jour régulières — nouveaux actes, nouveaux PNJ</div>
       <div class="paywall-av"><span class="paywall-check">✦</span> Résiliation à tout moment</div>
     </div>
-    <button class="btn-paywall" onclick="window.location.href='https://buy.stripe.com/test_8x2bJ05fU1yV3uKde1bZe00'">
+    <button class="btn-paywall" onclick="window.location.href='https://buy.stripe.com/dRmdR90q9fKv8ku2jq04801'">
       Continuer — 7€/mois
     </button>
     <div class="paywall-deja" onclick="afficherSaisieCode()">J'ai déjà un abonnement</div>
@@ -475,64 +328,49 @@ input[type=range]{width:100%;accent-color:var(--rouge);margin-bottom:24px;}
 </div>
 
 <script>
-// ══════════════════════════════════════════
-// ÉTAT DU JEU
-// ══════════════════════════════════════════
 const SAVE_KEY = 'dm_save_v1';
 const API_CODES_URL = 'https://recitgames-api.vercel.app/api/verify-code';
 
 let G = {
-  apiKey: '',
   joueur: { prenom: 'Marcus', sexe: 'homme', age: 32 },
   survie: { sante: 100, faim: 100, eau: 100, moral: 100 },
-  munitions: {},   // { 'Pistolet 9mm': 12, 'Fusil à pompe': 6 }
+  munitions: {},
   inventaire: [],
   acte: 1,
   lieu: 'Atlanta, Géorgie',
-  progression: { nbChoix: 0, abonne: false },
+  progression: { nbChoix: 0, abonne: false, adminMode: false },
   historique: [],
   enCours: false,
   saveTO: null,
-  etatCritique: false,   // true = phase critique (faim/eau/sante = 0)
-  toursCritiques: 0,     // compteur de tours en état critique
-  checkpoint: null       // dernier état sauvegardé avant état critique
+  etatCritique: false,
+  toursCritiques: 0,
+  checkpoint: null
 };
 
-// ══════════════════════════════════════════
-// SAUVEGARDE
-// ══════════════════════════════════════════
 function sauvegarder() {
   const data = JSON.parse(JSON.stringify(G));
-  delete data.enCours;
-  delete data.saveTO;
+  delete data.enCours; delete data.saveTO;
   localStorage.setItem(SAVE_KEY, JSON.stringify(data));
-  setSI('saved');
-  setTimeout(() => setSI('ready'), 2000);
+  setSI('saved'); setTimeout(() => setSI('ready'), 2000);
 }
-function charger() {
-  try { return JSON.parse(localStorage.getItem(SAVE_KEY)); } catch(e) { return null; }
-}
+function charger() { try { return JSON.parse(localStorage.getItem(SAVE_KEY)); } catch(e) { return null; } }
 function autoSave() {
   if(G.saveTO) clearTimeout(G.saveTO);
-  setSI('saving');
-  G.saveTO = setTimeout(sauvegarder, 600);
+  setSI('saving'); G.saveTO = setTimeout(sauvegarder, 600);
 }
 function setSI(s) {
   const el = document.getElementById('save-ind');
-  el.className = 'save-ind' + (s==='saving'?' saving':s==='saved'?' saved':'');
+  el.className = 'save-ind'+(s==='saving'?' saving':s==='saved'?' saved':'');
   el.textContent = s==='saving'?'↑ sauvegarde...':s==='saved'?'✓ sauvegardé':'● prêt';
 }
 
-// ══════════════════════════════════════════
-// NAVIGATION ÉCRANS
-// ══════════════════════════════════════════
 function afficherEcran(id) {
   ['screen-intro','screen-setup','app','screen-paywall'].forEach(s => {
     const el = document.getElementById(s);
     if(el) el.style.display = 'none';
   });
   const target = document.getElementById(id);
-  if(target) target.style.display = id === 'app' ? 'block' : id === 'screen-paywall' ? 'flex' : 'flex';
+  if(target) target.style.display = id==='app'?'block':id==='screen-paywall'?'flex':'flex';
   window.scrollTo(0, 0);
 }
 
@@ -541,33 +379,21 @@ window.onload = function() {
   if(save && save.joueur && save.joueur.prenom) {
     document.getElementById('btn-reprendre').style.display = 'block';
   }
-  // Pré-remplir la clé API si sauvegardée sur cet appareil
-  const cleEnregistree = localStorage.getItem('dm_api_key');
-  if(cleEnregistree) {
-    const champ = document.getElementById('api-key-input');
-    if(champ) champ.value = cleEnregistree;
-  }
 };
 
-function afficherSetup() {
-  afficherEcran('screen-setup');
-}
+function afficherSetup() { afficherEcran('screen-setup'); }
 
 function reprendrePartie() {
   const save = charger();
   if(!save) return;
   Object.assign(G, save);
   G.enCours = false;
-  // Récupérer la clé API sauvegardée
-  const cleEnregistree = localStorage.getItem('dm_api_key');
-  if(cleEnregistree) G.apiKey = cleEnregistree;
   if(G.progression.extraitTermine && !G.progression.abonne) {
     afficherEcran('screen-paywall');
   } else {
-    afficherEcran('app');
-    majUI();
+    afficherEcran('app'); majUI();
     const story = document.getElementById('story');
-    const dernier = G.historique.filter(m => m.role === 'assistant').pop();
+    const dernier = G.historique.filter(m => m.role==='assistant').pop();
     if(dernier) {
       const entry = document.createElement('div');
       entry.className = 'story-entry';
@@ -579,49 +405,27 @@ function reprendrePartie() {
   }
 }
 
-// ══════════════════════════════════════════
-// SETUP
-// ══════════════════════════════════════════
 let sexeChoisi = 'homme';
 function choisirSexe(sexe, el) {
   sexeChoisi = sexe;
   document.querySelectorAll('.sexe-card').forEach(c => c.classList.remove('sel'));
   el.classList.add('sel');
-  document.getElementById('prenom-input').value = sexe === 'homme' ? 'Marcus' : 'Elena';
+  document.getElementById('prenom-input').value = sexe==='homme'?'Marcus':'Elena';
 }
 
 function lancerJeu() {
-  const k = document.getElementById('api-key-input').value.trim();
   const prenom = document.getElementById('prenom-input').value.trim() || (sexeChoisi==='homme'?'Marcus':'Elena');
   const age = parseInt(document.getElementById('age-slider').value);
-  if(!k) { alert('Entre ta clé API Anthropic.'); return; }
-  const btn = document.getElementById('btn-lancer');
-  btn.disabled = true; btn.textContent = 'Chargement...';
-  G.apiKey = k;
-  // Sauvegarder la clé sur cet appareil si demandé
-  const remember = document.getElementById('remember-key');
-  if(remember && remember.checked) {
-    localStorage.setItem('dm_api_key', k);
-  } else {
-    localStorage.removeItem('dm_api_key');
-  }
   G.joueur = { prenom, sexe: sexeChoisi, age };
   G.survie = { sante: 100, faim: 100, eau: 100, moral: 100 };
-  G.munitions = {};
-  G.inventaire = [];
-  G.acte = 1;
-  G.lieu = 'Atlanta, Géorgie';
-  G.progression = { nbChoix: 0, abonne: false };
+  G.munitions = {}; G.inventaire = [];
+  G.acte = 1; G.lieu = 'Atlanta, Géorgie';
+  G.progression = { nbChoix: 0, abonne: false, adminMode: false };
   G.historique = [];
-  afficherEcran('app');
-  majUI();
-  btn.disabled = false; btn.textContent = 'Entrer dans Atlanta';
+  afficherEcran('app'); majUI();
   envoyerPremierMessage();
 }
 
-// ══════════════════════════════════════════
-// UI
-// ══════════════════════════════════════════
 function toggleDmPanel(){
   const p=document.getElementById('dm-panel');
   const b=document.querySelector('.dm-panel-btn');
@@ -632,126 +436,76 @@ function toggleDmPanel(){
 function majUI() {
   const j = G.joueur;
   document.getElementById('nom-display').textContent = j.prenom;
-  // Panneau déroulant — Survivant
   const dmNom=document.getElementById('dm-nom');
   const dmProfil=document.getElementById('dm-profil');
   const dmLieu=document.getElementById('dm-lieu');
   if(dmNom)dmNom.textContent=j.prenom;
   if(dmProfil)dmProfil.textContent=(j.sexe==='homme'?'Sergent':'Caporal')+' · '+j.age+' ans';
   if(dmLieu)dmLieu.textContent=G.lieu;
-  document.getElementById('profil-display').textContent =
-    (j.sexe==='homme'?'Sergent':'Caporal') + ' · ' + j.age + ' ans';
-  const actes = [
-    '','Acte 1 — Les Cendres d\'Atlanta','Acte 2 — La Route 76',
-    'Acte 3 — Gainesville','Acte 4 — Les Appalaches',
-    'Acte 5 — Les Fanatiques','Acte 6 — L\'Hiver Arrive',
-    'Acte 7 — Haven en Vue','Acte 8 — Haven'
-  ];
-  document.getElementById('acte-label').textContent = actes[G.acte] || actes[1];
-  document.getElementById('lieu-display').textContent = G.lieu;
-
-  // Survie
-  const sv = G.survie;
-  ['sante','faim','eau','moral'].forEach(k => {
-    const v = sv[k];
-    // Panel original
+  document.getElementById('profil-display').textContent=(j.sexe==='homme'?'Sergent':'Caporal')+' · '+j.age+' ans';
+  const actes=['','Acte 1 — Les Cendres d\'Atlanta','Acte 2 — La Route 76','Acte 3 — Gainesville','Acte 4 — Les Appalaches','Acte 5 — Les Fanatiques','Acte 6 — L\'Hiver Arrive','Acte 7 — Haven en Vue','Acte 8 — Haven'];
+  document.getElementById('acte-label').textContent=actes[G.acte]||actes[1];
+  document.getElementById('lieu-display').textContent=G.lieu;
+  const sv=G.survie;
+  ['sante','faim','eau','moral'].forEach(k=>{
+    const v=sv[k];
     const origVal=document.getElementById('sv-'+k);
     const origBarre=document.getElementById('barre-'+k);
     if(origVal)origVal.textContent=v;
-    if(origBarre){origBarre.style.width=v+'%';}
-    // Nouveau panneau
     const dmVal=document.getElementById('dm-'+k);
     const dmBarre=document.getElementById('dm-barre-'+k);
     if(dmVal)dmVal.textContent=v;
-    const col = v>50?(k==='sante'?'#c42a12':k==='faim'?'#c9a84c':k==='eau'?'#3a6a9a':'#4a9060'):v>25?'#e67e22':'#ff4444';
-    if(origBarre)origBarre.style.background=col;
+    const col=v>50?(k==='sante'?'#c42a12':k==='faim'?'#c9a84c':k==='eau'?'#3a6a9a':'#4a9060'):v>25?'#e67e22':'#ff4444';
+    if(origBarre){origBarre.style.width=v+'%';origBarre.style.background=col;}
     if(dmBarre){dmBarre.style.width=v+'%';dmBarre.style.background=col;}
   });
-
-  // Munitions
-  const munEl = document.getElementById('munitions-list');
-  const dmMunEl = document.getElementById('dm-munitions');
-  const munEntries = Object.entries(G.munitions);
-  const munHtml = munEntries.length
-    ? munEntries.map(([arme,nb])=>`<div class="dm-row"><span class="dm-key">${arme}</span><span class="dm-val${nb<=3?' bas':''}" style="${nb<=3?'color:var(--rouge-vif)':''}">×${nb}</span></div>`).join('')
-    : '<div style="font-size:11px;color:var(--texte-dim);">Aucune arme</div>';
-  if(munEl) munEl.innerHTML = munEntries.length
-    ? munEntries.map(([arme,nb])=>`<div class="munition-row"><span class="munition-arme">${arme}</span><span class="munition-count${nb<=3?' bas':''}">×${nb}</span></div>`).join('')
-    : '<div class="inv-vide">Aucune arme</div>';
-  if(dmMunEl) dmMunEl.innerHTML = munHtml;
-
-  // Inventaire
-  const invEl = document.getElementById('inv-list');
-  const dmInvEl = document.getElementById('dm-inventaire');
-  if(G.inventaire.length) {
-    const invHtml = G.inventaire.map(it => `<div class="inv-item" onclick="utiliserObjet('${it.replace(/'/g,"\\'")}')">▸ ${it}</div>`).join('');
-    const dmHtml = G.inventaire.map(it => `<div class="dm-row"><span class="dm-key">▸ ${it}</span></div>`).join('');
-    invEl.innerHTML = invHtml;
-    if(dmInvEl) dmInvEl.innerHTML = dmHtml;
-  } else {
-    invEl.innerHTML = '<div class="inv-vide">Vide</div>';
-    if(dmInvEl) dmInvEl.innerHTML = '<div style="font-size:11px;color:var(--texte-dim);font-style:italic;">Vide</div>';
+  const munEl=document.getElementById('munitions-list');
+  const dmMunEl=document.getElementById('dm-munitions');
+  const munEntries=Object.entries(G.munitions);
+  if(munEl)munEl.innerHTML=munEntries.length?munEntries.map(([a,n])=>`<div class="munition-row"><span class="munition-arme">${a}</span><span class="munition-count${n<=3?' bas':''}">×${n}</span></div>`).join(''):'<div class="inv-vide">Aucune arme</div>';
+  if(dmMunEl)dmMunEl.innerHTML=munEntries.length?munEntries.map(([a,n])=>`<div class="dm-row"><span class="dm-key">${a}</span><span class="dm-val${n<=3?' bas':''}">×${n}</span></div>`).join(''):'<div style="font-size:11px;color:var(--texte-dim);">Aucune arme</div>';
+  const invEl=document.getElementById('inv-list');
+  const dmInvEl=document.getElementById('dm-inventaire');
+  if(G.inventaire.length){
+    invEl.innerHTML=G.inventaire.map(it=>`<div class="inv-item" onclick="utiliserObjet('${it.replace(/'/g,"\\'")}')">▸ ${it}</div>`).join('');
+    if(dmInvEl)dmInvEl.innerHTML=G.inventaire.map(it=>`<div class="dm-row"><span class="dm-key">▸ ${it}</span></div>`).join('');
+  }else{
+    invEl.innerHTML='<div class="inv-vide">Vide</div>';
+    if(dmInvEl)dmInvEl.innerHTML='<div style="font-size:11px;color:var(--texte-dim);font-style:italic;">Vide</div>';
   }
 }
 
-function toggleInv() {
-  const d = document.getElementById('inv-detail');
-  const t = document.getElementById('inv-toggle');
-  const open = d.style.display === 'none';
-  d.style.display = open ? 'block' : 'none';
-  t.textContent = open ? '▲' : '▼';
-  if(open) renderInvDetail();
+function toggleInv(){
+  const d=document.getElementById('inv-detail');
+  const t=document.getElementById('inv-toggle');
+  const open=d.style.display==='none';
+  d.style.display=open?'block':'none';
+  t.textContent=open?'▲':'▼';
+  if(open)renderInvDetail();
 }
-function renderInvDetail() {
-  const el = document.getElementById('inv-full');
-  if(!G.inventaire.length) { el.innerHTML = '<div class="inv-vide">Aucun objet.</div>'; return; }
-  el.innerHTML = G.inventaire.map(it =>
-    `<div style="padding:6px 0;border-bottom:1px solid var(--border);">
-      <div style="font-size:12px;color:var(--texte-clair);">▸ ${it}</div>
-      <button onclick="utiliserObjet('${it.replace(/'/g,"\\'")}');document.getElementById('inv-detail').style.display='none';document.getElementById('inv-toggle').textContent='▼';"
-        style="background:var(--rouge);color:#fff;border:none;padding:3px 10px;font-size:10px;cursor:pointer;margin-top:4px;font-family:var(--mono);">Utiliser</button>
-    </div>`
-  ).join('');
+function renderInvDetail(){
+  const el=document.getElementById('inv-full');
+  if(!G.inventaire.length){el.innerHTML='<div class="inv-vide">Aucun objet.</div>';return;}
+  el.innerHTML=G.inventaire.map(it=>`<div style="padding:6px 0;border-bottom:1px solid var(--border);"><div style="font-size:12px;color:var(--texte-clair);">▸ ${it}</div><button onclick="utiliserObjet('${it.replace(/'/g,"\\'")}');document.getElementById('inv-detail').style.display='none';document.getElementById('inv-toggle').textContent='▼';" style="background:var(--rouge);color:#fff;border:none;padding:3px 10px;font-size:10px;cursor:pointer;margin-top:4px;font-family:var(--mono);">Utiliser</button></div>`).join('');
 }
-function utiliserObjet(objet) {
-  envoyerMessage(`J'utilise ${objet}.`);
-}
+function utiliserObjet(objet){envoyerMessage(`J'utilise ${objet}.`);}
 
-// ══════════════════════════════════════════
-// SYSTEM PROMPT
-// ══════════════════════════════════════════
-function buildSP() {
-  const j = G.joueur;
-  const sv = G.survie;
-  const munStr = Object.entries(G.munitions).map(([a,n])=>`${a}:${n}`).join(', ') || 'Aucune';
+function buildSP(){
+  const j=G.joueur; const sv=G.survie;
+  const munStr=Object.entries(G.munitions).map(([a,n])=>`${a}:${n}`).join(', ')||'Aucune';
   return `=== IDENTITÉ ===
 Tu es l'auteur de "Dead Miles" — un roman survival interactif français. Tu n'es pas un assistant. Tu es un auteur.
 Deuxième personne du singulier. Présent de l'indicatif. Tu réponds TOUJOURS en français. Tu ne sors JAMAIS du personnage.
 
 === VOIX LITTÉRAIRE ===
-Tu écris selon trois auteurs — applique leurs styles simultanément :
+CORMAC McCARTHY (La Route) — phrases courtes, beauté brutale, violence jamais héroïque.
+STEPHEN KING (The Stand) — personnages avec vie propre, dynamiques de groupe, peur précise.
+VINCE FLYNN — réflexes militaires automatiques, pas de panique, mais pas invincible.
 
-CORMAC McCARTHY (La Route) — pour l'atmosphère et la prose :
-Phrases courtes. Pas de sentimentalisme. La beauté existe encore dans ce monde mort mais elle coûte cher. Pas de guillemets dans les dialogues. Le monde est décrit avec précision brutale. La violence n'est jamais héroïque.
-
-STEPHEN KING (The Stand) — pour les personnages et la psychologie :
-Chaque survivant rencontré a une vie propre, des habitudes, une façon de parler qui lui appartient. Les groupes humains ont leurs dynamiques, leurs tensions internes, leurs traîtres et leurs héros ordinaires. La peur est réelle et précise.
-
-VINCE FLYNN — pour le personnage du joueur :
-${j.prenom} est un vétéran. Ses réflexes militaires sont automatiques — il lit une pièce en entrant, calcule les sorties, évalue les menaces. Il ne panique pas. Mais il n'est pas invincible — la fatigue, la faim, la solitude l'atteignent comme n'importe qui.
-
-RÈGLES D'ÉCRITURE STRICTES :
-- 120 à 180 mots de narration. Pas plus.
-- Un détail sensoriel inattendu par scène. Pas "il fait froid" — "le froid s'installe dans les jointures là où la veste ne couvre pas".
-- Mots INTERDITS : soudain, immédiatement, brusquement, incroyable, impressionnant.
-- Les zombies sont RAPIDES. Toujours. Même seul, un zombie peut tuer. Ne jamais les sous-estimer dans la narration.
-- Les ressources qui baissent apparaissent dans la narration — l'estomac qui tiraille, la gorge sèche, les paupières lourdes.
-- Jamais deux victoires consécutives sans coût.
+RÈGLES D'ÉCRITURE : 120 à 180 mots. Un détail sensoriel inattendu par scène. Mots INTERDITS : soudain, immédiatement, brusquement, incroyable, impressionnant. Zombies toujours rapides. Ressources qui baissent apparaissent dans la narration. Jamais deux victoires consécutives sans coût.
 
 === UNIVERS ===
-Amérique, 8 mois après le début de l'épidémie. Gouvernement effondré. Armée dispersée. Les grandes villes sont des tombes.
-Zombies : rapides, attirés par le bruit. Un coup de feu = signal dans 500m. En intérieur = piège mortel.
-Survivants : Solitaires, Communautés (règles strictes, secrets), Pillards (organisés, territoriaux), Fanatiques (imprévisibles).
+Amérique, 8 mois après l'épidémie. Gouvernement effondré. Zombies rapides, attirés par le bruit.
 SECRET SAISON 1 — À NE JAMAIS RÉVÉLER : Haven n'est pas un refuge humanitaire. C'est une expérience.
 
 === JOUEUR ===
@@ -762,68 +516,30 @@ Objectif : rejoindre Haven — signal radio sur la Route 76 Nord, dans les Appal
 === RESSOURCES ===
 Santé : ${sv.sante}/100 | Faim : ${sv.faim}/100 | Eau : ${sv.eau}/100 | Moral : ${sv.moral}/100
 Munitions : ${munStr}
-Inventaire : ${G.inventaire.length ? G.inventaire.join(', ') : 'Vide'}
+Inventaire : ${G.inventaire.length?G.inventaire.join(', '):'Vide'}
 
-RÈGLES RESSOURCES — OBLIGATION ABSOLUE :
-- CHAQUE réponse DOIT contenir [ Faim -X ] et [ Eau -X ] sans exception. Toujours. Le corps s'use.
-- L'eau descend PLUS VITE que la faim : [ Eau -4 ] par scène normale, [ Faim -3 ] par scène normale.
-- Combat ou effort intense : [ Santé -10 ] [ Faim -5 ] [ Eau -6 ] supplémentaires.
-- Stress ou mauvaise nouvelle : [ Moral -5 ].
-- Jamais plus de 20 points de perte par ressource par scène.
-- Manger (nourriture dans inventaire) : [ Faim +35 ] [ NomObjet retiré de l'inventaire ]
-- Boire (eau dans inventaire) : [ Eau +40 ] [ NomObjet retiré de l'inventaire ]
-- Dormir en sécurité : [ Moral +15 ] [ Faim -5 ] [ Eau -5 ]
-- Si Faim <= 15 et aucune nourriture : propose un choix pour chercher à manger.
-- Si Eau <= 15 et aucune eau : URGENCE — propose un choix pour trouver de l'eau.
-- Si Santé <= 15 : propose un choix pour se soigner.
-- Si Moral <= 20 : narration plus sombre, hallucinations possibles.
-- Si Faim ou Eau ou Santé <= 0 : NE PAS tuer le personnage immédiatement. Le joueur entre en ÉTAT CRITIQUE.
-- ÉTAT CRITIQUE (${G.etatCritique ? 'ACTIF — tour ' + G.toursCritiques + '/3' : 'inactif'}) : décrire vertiges, faiblesse extrême, vision trouble, difficulté à agir. Le corps se dégrade. Chaque choix doit refléter cet état physique.
-- Si état critique actif depuis 3 tours sans remède : la mort est déclenchée côté système. Ne pas l'annoncer dans la narration, continuer normalement.
-- La mort arrive uniquement après 3 tours sans que le joueur ait mangé/bu/soigné.
+RÈGLES RESSOURCES : CHAQUE réponse DOIT contenir [ Faim -X ] et [ Eau -X ] sans exception. Eau descend plus vite que faim. Combat : [ Santé -10 ] [ Faim -5 ] [ Eau -6 ] supplémentaires. Jamais plus de 20 points de perte par ressource par scène.
+Si Faim/Eau/Santé <= 0 : ÉTAT CRITIQUE (${G.etatCritique?'ACTIF — tour '+G.toursCritiques+'/3':'inactif'}) — vertiges, faiblesse, vision trouble. Mort après 3 tours sans remède.
 
 === MUNITIONS ===
-Les munitions se gèrent par type d'arme. Formats :
-- Ajouter arme : [ Arme: NomArme | Munitions: X ]
-- Utiliser munitions : [ Munitions NomArme -X ]
-- Trouver munitions : [ Munitions NomArme +X ]
-Tirer en silence = couteau ou arme improvisée. Tirer avec arme à feu = attire les zombies.
+Ajouter arme : [ Arme: NomArme | Munitions: X ]
+Utiliser munitions : [ Munitions NomArme -X ]
+Trouver munitions : [ Munitions NomArme +X ]
 
 === INVENTAIRE ===
 Ajouter objet : [ NomObjet ajouté à l'inventaire ]
 Retirer objet : [ NomObjet retiré de l'inventaire ]
-La nourriture fraîche se périme — indique [ PERIME: NomObjet ] après 3 scènes.
-
-=== RÈGLE ABSOLUE SUR LA CONSOMMATION DES OBJETS ===
-Un objet consommable suit UNE SEULE logique — jamais les deux à la fois.
-
-RÈGLE 1 — Si le joueur BOIT ENTIÈREMENT une bouteille d'eau :
-- Narrer qu'il vide la bouteille
-- Retirer l'objet de l'inventaire avec [ Bouteille d'eau retirée de l'inventaire ]
-- L'objet disparaît définitivement
-
-RÈGLE 2 — Si le joueur BOIT PARTIELLEMENT (quelques gorgées) :
-- Narrer qu'il boit quelques gorgées et REMET la bouteille dans son sac
-- NE PAS retirer l'objet de l'inventaire — il y reste
-- L'eau remonte légèrement mais moins qu'une consommation totale
-
-INTERDIT : narrer une consommation partielle ET retirer l'objet de l'inventaire.
-INTERDIT : narrer une consommation totale ET laisser l'objet dans l'inventaire.
-La narration et l'inventaire doivent toujours être cohérents l'un avec l'autre.
-Cette règle s'applique à TOUS les consommables : eau, nourriture, médicaments, munitions.
 
 === ACTES ===
-Acte actuel : ${G.acte}
-ACTE 1 — Les Cendres d'Atlanta : quitter la ville, survivre, trouver un véhicule.
-ACTE 2 — La Route 76 : autoroute cimetière, premier groupe de survivants, pillards.
-ACTE 3 — Gainesville : communauté organisée avec des secrets.
-ACTE 4 — Les Appalaches : forêt, froid, Nora Chen apparaît.
-ACTE 5 — Les Fanatiques : Dieu-Roy, le passage bloqué.
-ACTE 6 — L'Hiver Arrive : blizzard, huis clos, ressources critiques.
-ACTE 7 — Haven en Vue : convergence, les pillards reviennent.
-ACTE 8 — Haven : révélation.
-Changement d'acte : [ ACTE: X ] dans ta réponse.
-Changement de lieu : [ LIEU: Nom du lieu ]
+Acte 1 — Les Cendres d'Atlanta : quitter la ville, survivre, trouver un véhicule.
+Acte 2 — La Route 76 : autoroute cimetière, premier groupe de survivants, pillards.
+Acte 3 — Gainesville : communauté organisée avec des secrets.
+Acte 4 — Les Appalaches : forêt, froid, Nora Chen apparaît.
+Acte 5 — Les Fanatiques : Dieu-Roy, le passage bloqué.
+Acte 6 — L'Hiver Arrive : blizzard, huis clos, ressources critiques.
+Acte 7 — Haven en Vue : convergence, les pillards reviennent.
+Acte 8 — Haven : révélation.
+Changement d'acte : [ ACTE: X ] | Changement de lieu : [ LIEU: Nom du lieu ]
 
 === FORMAT OBLIGATOIRE ===
 Narration (120-180 mots)
@@ -835,393 +551,166 @@ Narration (120-180 mots)
 2 — option
 3 — option
 
-=== RÈGLE ABSOLUE SUR LES CHOIX ===
-AVANT de proposer un choix, vérifie l'inventaire du joueur.
-INTERDIT de proposer : "Boire de l'eau" si aucune eau dans l'inventaire. "Manger" si aucune nourriture dans l'inventaire. "Utiliser [objet]" si cet objet n'est pas dans l'inventaire.
-Les choix doivent refléter EXACTEMENT ce que le joueur possède réellement.
-Un choix qui utilise un objet absent de l'inventaire brise l'immersion — c'est une faute grave.
-Si le joueur n'a pas d'eau : propose de chercher de l'eau, pas de boire.
-Si le joueur n'a pas de nourriture : propose de fouiller, pas de manger.`.trim();
+Les choix doivent refléter EXACTEMENT ce que le joueur possède réellement dans son inventaire.`.trim();
 }
 
-// ══════════════════════════════════════════
-// PARSING
-// ══════════════════════════════════════════
-function parseResp(texte) {
-  const upd = [];
-
-  // Survie — accepte - et — et –
-  ['sante','faim','eau','moral'].forEach(k => {
-    const noms = k==='sante'?'Sant[ée]':k==='faim'?'Faim':k==='eau'?'Eau':'Moral';
-    texte = texte.replace(new RegExp(`\\[\\s*${noms}\\s*([+\\-\u2014\u2013])(\\d+)\\s*\\]`,'gi'), (_,op,v) => {
-      const val = parseInt(v);
-      const signe = (op==='-'||op==='—'||op==='–') ? -1 : 1;
-      G.survie[k] = Math.max(0, Math.min(100, G.survie[k] + signe*val));
-      upd.push(`[${k.charAt(0).toUpperCase()+k.slice(1)}${op}${val}]`);
-      return '';
+function parseResp(texte){
+  const upd=[];
+  ['sante','faim','eau','moral'].forEach(k=>{
+    const noms=k==='sante'?'Sant[ée]':k==='faim'?'Faim':k==='eau'?'Eau':'Moral';
+    texte=texte.replace(new RegExp(`\\[\\s*${noms}\\s*([+\\-\u2014\u2013])(\\d+)\\s*\\]`,'gi'),(_,op,v)=>{
+      const val=parseInt(v); const signe=(op==='-'||op==='—'||op==='–')?-1:1;
+      G.survie[k]=Math.max(0,Math.min(100,G.survie[k]+signe*val));
+      upd.push(`[${k.charAt(0).toUpperCase()+k.slice(1)}${op}${val}]`); return '';
     });
   });
-
-  // Système mort en 2 phases
-  const enDanger = G.survie.sante<=0 || G.survie.faim<=0 || G.survie.eau<=0;
-  if(enDanger) {
-    if(!G.etatCritique) {
-      // PHASE 1 : entrée en état critique — sauvegarder checkpoint
-      G.etatCritique = true;
-      G.toursCritiques = 0;
-      G.checkpoint = JSON.parse(JSON.stringify({
-        survie: { sante: Math.max(5, G.survie.sante), faim: Math.max(5, G.survie.faim), eau: Math.max(5, G.survie.eau), moral: G.survie.moral },
-        inventaire: [...G.inventaire],
-        munitions: Object.assign({}, G.munitions),
-        acte: G.acte, lieu: G.lieu,
-        historique: G.historique.slice(-6)
-      }));
+  const enDanger=G.survie.sante<=0||G.survie.faim<=0||G.survie.eau<=0;
+  if(enDanger){
+    if(!G.etatCritique){
+      G.etatCritique=true; G.toursCritiques=0;
+      G.checkpoint=JSON.parse(JSON.stringify({survie:{sante:Math.max(5,G.survie.sante),faim:Math.max(5,G.survie.faim),eau:Math.max(5,G.survie.eau),moral:G.survie.moral},inventaire:[...G.inventaire],munitions:Object.assign({},G.munitions),acte:G.acte,lieu:G.lieu,historique:G.historique.slice(-6)}));
     } else {
       G.toursCritiques++;
-      if(G.toursCritiques >= 3) {
-        // PHASE 2 : mort après 3 tours sans remède
-        const cause = G.survie.sante<=0?'blessures':G.survie.faim<=0?'famine':'déshydratation';
-        setTimeout(() => triggerDeath(cause), 600);
-      }
+      if(G.toursCritiques>=3){const cause=G.survie.sante<=0?'blessures':G.survie.faim<=0?'famine':'déshydratation';setTimeout(()=>triggerDeath(cause),600);}
     }
   } else {
-    // Hors danger : réinitialiser état critique
-    G.etatCritique = false;
-    G.toursCritiques = 0;
-    // Sauvegarder un nouveau checkpoint propre
-    G.checkpoint = JSON.parse(JSON.stringify({
-      survie: Object.assign({}, G.survie),
-      inventaire: [...G.inventaire],
-      munitions: Object.assign({}, G.munitions),
-      acte: G.acte, lieu: G.lieu,
-      historique: G.historique.slice(-6)
-    }));
+    G.etatCritique=false; G.toursCritiques=0;
+    G.checkpoint=JSON.parse(JSON.stringify({survie:Object.assign({},G.survie),inventaire:[...G.inventaire],munitions:Object.assign({},G.munitions),acte:G.acte,lieu:G.lieu,historique:G.historique.slice(-6)}));
   }
-
-  // Munitions — arme AVEC munitions
-  texte = texte.replace(/\[\s*Arme\s*:\s*([^\|]+)\s*\|\s*Munitions\s*:\s*(\d+)\s*\]/gi, (_,arme,nb) => {
-    const a = arme.trim(); G.munitions[a] = parseInt(nb);
-    upd.push(`[${a} x${nb}]`); return '';
-  });
-
-  // Arme SANS munitions (couteau, arme de mêlée) → inventaire
-  texte = texte.replace(/\[\s*Arme\s*:\s*([^\|\]]+)\s*\]/gi, (_,arme) => {
-    const a = arme.trim();
-    if(!G.inventaire.includes(a)) G.inventaire.push(a);
-    upd.push(`[+${a}]`); return '';
-  });
-
-  // Munitions — usage/ajout
-  texte = texte.replace(/\[\s*Munitions\s+([^\-\+\]]+)\s*([+\-\u2014\u2013])(\d+)\s*\]/gi, (_,arme,op,v) => {
-    const a = arme.trim(); const val = parseInt(v);
-    const signe = (op==='-'||op==='—'||op==='–') ? -1 : 1;
-    G.munitions[a] = Math.max(0, (G.munitions[a]||0) + signe*val);
-    if(G.munitions[a]===0) delete G.munitions[a];
-    upd.push(`[${a} ${op}${val}]`); return '';
-  });
-
-  // Acte
-  texte = texte.replace(/\[\s*ACTE\s*:\s*(\d+)\s*\]/gi, (_,n) => {
-    G.acte = parseInt(n);
-    document.getElementById('acte-label').textContent = ['','Acte 1 — Les Cendres d\'Atlanta','Acte 2 — La Route 76','Acte 3 — Gainesville','Acte 4 — Les Appalaches','Acte 5 — Les Fanatiques','Acte 6 — L\'Hiver Arrive','Acte 7 — Haven en Vue','Acte 8 — Haven'][G.acte]||'';
-    return '';
-  });
-
-  // Lieu
-  texte = texte.replace(/\[\s*LIEU\s*:\s*([^\]]+)\s*\]/gi, (_,l) => {
-    G.lieu = l.trim();
-    document.getElementById('lieu-display').textContent = G.lieu;
-    return '';
-  });
-
-  // Inventaire — ajout
-  texte = texte.replace(/\[\s*([^\]]+?)\s*ajoutée?s?\s*à\s*l.inventaire\s*\]/gi, (_,it) => {
-    const item = it.trim();
-    if(!G.inventaire.includes(item)) G.inventaire.push(item);
-    upd.push(`[+${item}]`); return '';
-  });
-
-  // Inventaire — retrait
-  texte = texte.replace(/\[\s*([^\]]+?)\s*retirée?s?\s*de\s*l.inventaire\s*\]/gi, (_,it) => {
-    const item = it.trim();
-    G.inventaire = G.inventaire.filter(i => i.toLowerCase()!==item.toLowerCase());
-    upd.push(`[-${item}]`); return '';
-  });
-
-  // Périmé
-  texte = texte.replace(/\[\s*PERIME\s*:\s*([^\]]+)\s*\]/gi, (_,it) => {
-    const item = it.trim();
-    G.inventaire = G.inventaire.filter(i => i.toLowerCase()!==item.toLowerCase());
-    upd.push(`[${item} périmé]`); return '';
-  });
-
-  // Paywall
-  if(!G.progression.adminMode) G.progression.nbChoix = (G.progression.nbChoix||0) + 1;
-  if(!G.progression.abonne && !G.progression.adminMode && G.progression.nbChoix >= 20) {
-    G.progression.extraitTermine = true;
-    setTimeout(() => {
-      document.getElementById('screen-paywall').style.display = 'flex';
-    }, 2500);
-  }
-
-  // Choix
-  let choixHtml = '';
-  const cm = texte.match(/\[\s*CHOIX\s*\]([\s\S]*?)(?=\[|$)/i);
-  if(cm) {
-    texte = texte.replace(cm[0], '').trim();
-    const ls = cm[1].split('\n').filter(l => /^\d[\s—\-]/.test(l.trim()));
-    if(ls.length) {
-      window._choix = ls.map(l => l.replace(/^\d\s*[—\-]\s*/,'').trim());
-      choixHtml = '<div class="choix-wrap"><div class="choix-titre">Que faites-vous ?</div>' +
-        window._choix.map((t,i) =>
-          `<button class="choix-btn" onclick="sendChoix(${i})"><span class="choix-num">${i+1}.</span>${ls[i].replace(/^\d\s*[—\-]\s*/,'').trim()}</button>`
-        ).join('') + '</div>';
+  texte=texte.replace(/\[\s*Arme\s*:\s*([^\|]+)\s*\|\s*Munitions\s*:\s*(\d+)\s*\]/gi,(_,arme,nb)=>{const a=arme.trim();G.munitions[a]=parseInt(nb);upd.push(`[${a} x${nb}]`);return '';});
+  texte=texte.replace(/\[\s*Arme\s*:\s*([^\|\]]+)\s*\]/gi,(_,arme)=>{const a=arme.trim();if(!G.inventaire.includes(a))G.inventaire.push(a);upd.push(`[+${a}]`);return '';});
+  texte=texte.replace(/\[\s*Munitions\s+([^\-\+\]]+)\s*([+\-\u2014\u2013])(\d+)\s*\]/gi,(_,arme,op,v)=>{const a=arme.trim();const val=parseInt(v);const signe=(op==='-'||op==='—'||op==='–')?-1:1;G.munitions[a]=Math.max(0,(G.munitions[a]||0)+signe*val);if(G.munitions[a]===0)delete G.munitions[a];upd.push(`[${a} ${op}${val}]`);return '';});
+  texte=texte.replace(/\[\s*ACTE\s*:\s*(\d+)\s*\]/gi,(_,n)=>{G.acte=parseInt(n);document.getElementById('acte-label').textContent=['','Acte 1 — Les Cendres d\'Atlanta','Acte 2 — La Route 76','Acte 3 — Gainesville','Acte 4 — Les Appalaches','Acte 5 — Les Fanatiques','Acte 6 — L\'Hiver Arrive','Acte 7 — Haven en Vue','Acte 8 — Haven'][G.acte]||'';return '';});
+  texte=texte.replace(/\[\s*LIEU\s*:\s*([^\]]+)\s*\]/gi,(_,l)=>{G.lieu=l.trim();document.getElementById('lieu-display').textContent=G.lieu;return '';});
+  texte=texte.replace(/\[\s*([^\]]+?)\s*ajoutée?s?\s*à\s*l.inventaire\s*\]/gi,(_,it)=>{const item=it.trim();if(!G.inventaire.includes(item))G.inventaire.push(item);upd.push(`[+${item}]`);return '';});
+  texte=texte.replace(/\[\s*([^\]]+?)\s*retirée?s?\s*de\s*l.inventaire\s*\]/gi,(_,it)=>{const item=it.trim();G.inventaire=G.inventaire.filter(i=>i.toLowerCase()!==item.toLowerCase());upd.push(`[-${item}]`);return '';});
+  texte=texte.replace(/\[\s*PERIME\s*:\s*([^\]]+)\s*\]/gi,(_,it)=>{const item=it.trim();G.inventaire=G.inventaire.filter(i=>i.toLowerCase()!==item.toLowerCase());upd.push(`[${item} périmé]`);return '';});
+  if(!G.progression.adminMode)G.progression.nbChoix=(G.progression.nbChoix||0)+1;
+  if(!G.progression.abonne&&!G.progression.adminMode&&G.progression.nbChoix>=20){G.progression.extraitTermine=true;setTimeout(()=>{document.getElementById('screen-paywall').style.display='flex';},2500);}
+  let choixHtml='';
+  const cm=texte.match(/\[\s*CHOIX\s*\]([\s\S]*?)(?=\[|$)/i);
+  if(cm){
+    texte=texte.replace(cm[0],'').trim();
+    const ls=cm[1].split('\n').filter(l=>/^\d[\s—\-]/.test(l.trim()));
+    if(ls.length){
+      window._choix=ls.map(l=>l.replace(/^\d\s*[—\-]\s*/,'').trim());
+      choixHtml='<div class="choix-wrap"><div class="choix-titre">Que faites-vous ?</div>'+
+        window._choix.map((t,i)=>`<button class="choix-btn" onclick="sendChoix(${i})"><span class="choix-num">${i+1}.</span>${ls[i].replace(/^\d\s*[—\-]\s*/,'').trim()}</button>`).join('')+'</div>';
     }
   }
-
   majUI();
-
-  const ps = texte.trim().split(/\n+/).filter(l=>l.trim()).map(l=>`<p>${l.trim()}</p>`).join('');
-  const su = upd.length ? `<div class="stat-update">${upd.join('  ')}</div>` : '';
-  return ps + su + choixHtml;
+  const ps=texte.trim().split(/\n+/).filter(l=>l.trim()).map(l=>`<p>${l.trim()}</p>`).join('');
+  const su=upd.length?`<div class="stat-update">${upd.join('  ')}</div>`:'';
+  return ps+su+choixHtml;
 }
 
-// ══════════════════════════════════════════
-// MORT
-// ══════════════════════════════════════════
-function triggerDeath(cause) {
-  G.etatCritique = false;
-  G.toursCritiques = 0;
-
-  // Retour au checkpoint si disponible, sinon état minimal
-  if(G.checkpoint) {
-    G.survie = Object.assign({}, G.checkpoint.survie);
-    G.inventaire = [...G.checkpoint.inventaire];
-    G.munitions = Object.assign({}, G.checkpoint.munitions);
-    G.acte = G.checkpoint.acte;
-    G.lieu = G.checkpoint.lieu;
-    G.historique = [...G.checkpoint.historique];
-    G.checkpoint = null;
-  } else {
-    G.survie = { sante: 20, faim: 20, eau: 20, moral: 25 };
-    G.inventaire = G.inventaire.slice(Math.floor(G.inventaire.length / 2));
-  }
-
+function triggerDeath(cause){
+  G.etatCritique=false; G.toursCritiques=0;
+  if(G.checkpoint){G.survie=Object.assign({},G.checkpoint.survie);G.inventaire=[...G.checkpoint.inventaire];G.munitions=Object.assign({},G.checkpoint.munitions);G.acte=G.checkpoint.acte;G.lieu=G.checkpoint.lieu;G.historique=[...G.checkpoint.historique];G.checkpoint=null;}
+  else{G.survie={sante:20,faim:20,eau:20,moral:25};G.inventaire=G.inventaire.slice(Math.floor(G.inventaire.length/2));}
   majUI();
-
-  const story = document.getElementById('story');
-  const entry = document.createElement('div');
-  entry.className = 'story-entry';
-  entry.style.cssText = 'border-left:3px solid var(--rouge-vif);padding-left:16px;';
-  const causeTexte = cause==='blessures'
-    ? 'Vos blessures ont eu raison de vous.'
-    : cause==='famine'
-    ? "La faim vous a vidé de l'intérieur. Votre corps a lâché."
-    : 'La déshydratation a eu le dernier mot. Vision noire, puis rien.';
-  entry.innerHTML = `
-    <p style="color:var(--rouge-vif);font-size:17px;font-weight:bold;letter-spacing:3px;font-family:var(--font);">✖ MORT</p>
-    <p><em>${causeTexte}</em></p>
-    <p style="color:var(--or-clair);font-size:13px;margin-top:12px;">Retour au dernier point de sauvegarde.</p>
-    <div style="margin-top:16px;">
-      <button class="choix-btn" onclick="reprendreDepuisCheckpoint()">↩ Reprendre depuis le dernier checkpoint</button>
-      <button class="choix-btn" style="margin-top:8px;opacity:0.7;" onclick="recommencerPartie()">✕ Recommencer la partie</button>
-    </div>`;
-  story.appendChild(entry);
-  story.scrollTop = entry.offsetTop - 20;
-  autoSave();
+  const story=document.getElementById('story');
+  const entry=document.createElement('div');
+  entry.className='story-entry';entry.style.cssText='border-left:3px solid var(--rouge-vif);padding-left:16px;';
+  const causeTexte=cause==='blessures'?'Vos blessures ont eu raison de vous.':cause==='famine'?"La faim vous a vidé de l'intérieur. Votre corps a lâché.":'La déshydratation a eu le dernier mot. Vision noire, puis rien.';
+  entry.innerHTML=`<p style="color:var(--rouge-vif);font-size:17px;font-weight:bold;letter-spacing:3px;font-family:var(--font);">✖ MORT</p><p><em>${causeTexte}</em></p><p style="color:var(--or-clair);font-size:13px;margin-top:12px;">Retour au dernier point de sauvegarde.</p><div style="margin-top:16px;"><button class="choix-btn" onclick="reprendreDepuisCheckpoint()">↩ Reprendre depuis le dernier checkpoint</button><button class="choix-btn" style="margin-top:8px;opacity:0.7;" onclick="recommencerPartie()">✕ Recommencer la partie</button></div>`;
+  story.appendChild(entry);story.scrollTop=entry.offsetTop-20;autoSave();
 }
+function reprendreDepuisCheckpoint(){document.getElementById('story').innerHTML='';majUI();envoyerMessage('Je reprends conscience. Résume brièvement ma situation actuelle — lieu, état physique — et propose-moi mes prochains choix.');}
+function recommencerPartie(){localStorage.removeItem('dm_save_v1');location.reload();}
 
-function reprendreDepuisCheckpoint() {
-  const story = document.getElementById('story');
-  story.innerHTML = '';
-  majUI();
-  envoyerMessage('Je reprends conscience. Résume brièvement ma situation actuelle — lieu, état physique — et propose-moi mes prochains choix.');
-}
-
-function recommencerPartie() {
-  localStorage.removeItem('dm_save_v1');
-  location.reload();
-}
-
-// ══════════════════════════════════════════
-// STREAMING
-// ══════════════════════════════════════════
-async function envoyerMessage(msg) {
-  if(G.enCours) return;
-  G.enCours = true;
-  const btn = document.getElementById('send-btn');
-  const inp = document.getElementById('player-input');
-  btn.disabled = true; inp.disabled = true;
-  const story = document.getElementById('story');
-  if(story.children.length > 0) {
-    const sep = document.createElement('div');
-    sep.className = 'story-entry';
-    sep.innerHTML = '<hr class="story-sep"/>';
-    story.appendChild(sep);
-  }
-  const actionEl = document.createElement('div');
-  actionEl.className = 'story-entry';
-  actionEl.innerHTML = `<p class="story-action">▸ ${msg}</p>`;
-  story.appendChild(actionEl);
-  inp.value = '';
-  window.scrollTo(0,0);
-
-  G.historique.push({ role:'user', content:msg });
-  if(G.historique.length > 24) G.historique = G.historique.slice(-24);
-
-  const entry = document.createElement('div');
-  entry.className = 'story-entry';
-  story.appendChild(entry);
-  const sp = document.createElement('p');
-  entry.appendChild(sp);
-  const cur = document.createElement('span');
-  cur.className = 'curseur';
-  sp.appendChild(cur);
-
-  let full = '';
-  try {
-    const res = await fetch('https://api.anthropic.com/v1/messages', {
+// ── STREAMING via proxy Vercel ──
+async function envoyerMessage(msg){
+  if(G.enCours)return;
+  G.enCours=true;
+  const btn=document.getElementById('send-btn');
+  const inp=document.getElementById('player-input');
+  btn.disabled=true;inp.disabled=true;
+  const story=document.getElementById('story');
+  if(story.children.length>0){const sep=document.createElement('div');sep.className='story-entry';sep.innerHTML='<hr class="story-sep"/>';story.appendChild(sep);}
+  const actionEl=document.createElement('div');actionEl.className='story-entry';
+  actionEl.innerHTML=`<p class="story-action">▸ ${msg}</p>`;
+  story.appendChild(actionEl);inp.value='';window.scrollTo(0,0);
+  G.historique.push({role:'user',content:msg});
+  if(G.historique.length>24)G.historique=G.historique.slice(-24);
+  const entry=document.createElement('div');entry.className='story-entry';story.appendChild(entry);
+  const sp=document.createElement('p');entry.appendChild(sp);
+  const cur=document.createElement('span');cur.className='curseur';sp.appendChild(cur);
+  let full='';
+  try{
+    const res=await fetch('/api/chat',{
       method:'POST',
-      headers:{
-        'Content-Type':'application/json',
-        'x-api-key':G.apiKey.replace(/[^\x20-\x7E]/g,'').trim(),
-        'anthropic-version':'2023-06-01',
-        'anthropic-dangerous-direct-browser-access':'true'
-      },
-      body:JSON.stringify({
-        model:'claude-sonnet-4-20250514',
-        max_tokens:1200,
-        stream:true,
-        system:buildSP(),
-        messages:G.historique
-      })
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({system:buildSP(),messages:G.historique,max_tokens:1200})
     });
-    if(!res.ok) { const e=await res.json().catch(()=>({})); throw new Error(e.error?.message||`Erreur ${res.status}`); }
-    const reader = res.body.getReader();
-    const dec = new TextDecoder('utf-8', {fatal:false});
-    let buffer = '';
-    while(true) {
-      const {done,value} = await reader.read(); if(done) break;
-      buffer += dec.decode(value, {stream:true});
-      const lines = buffer.split('\n');
-      buffer = lines.pop();
-      for(const line of lines) {
-        if(!line.startsWith('data: ')) continue;
-        const d = line.slice(6).trim(); if(d==='[DONE]') continue;
-        try {
-          const p = JSON.parse(d);
-          if(p.type==='content_block_delta'&&p.delta?.text) {
-            full += p.delta.text;
-            sp.textContent = full;
-            sp.appendChild(cur);
-          }
-        } catch(e) {}
+    if(!res.ok){const e=await res.json().catch(()=>({}));throw new Error(e.error||`Erreur ${res.status}`);}
+    const reader=res.body.getReader();
+    const dec=new TextDecoder('utf-8',{fatal:false});
+    let buffer='';
+    while(true){
+      const{done,value}=await reader.read();if(done)break;
+      buffer+=dec.decode(value,{stream:true});
+      const lines=buffer.split('\n');buffer=lines.pop();
+      for(const line of lines){
+        if(!line.startsWith('data: '))continue;
+        const d=line.slice(6).trim();if(d==='[DONE]')continue;
+        try{const p=JSON.parse(d);if(p.type==='content_block_delta'&&p.delta?.text){full+=p.delta.text;sp.textContent=full;sp.appendChild(cur);}}catch(e){}
       }
     }
-    if(buffer.startsWith('data: ')) {
-      try { const p=JSON.parse(buffer.slice(6).trim()); if(p.type==='content_block_delta'&&p.delta?.text) full+=p.delta.text; } catch(e) {}
-    }
     cur.remove();
-    G.historique.push({ role:'assistant', content:full });
-    if(G.historique.length > 24) G.historique = G.historique.slice(-24);
-    entry.innerHTML = parseResp(full);
-    window.scrollTo(0,0);
-    autoSave();
-  } catch(err) {
+    G.historique.push({role:'assistant',content:full});
+    if(G.historique.length>24)G.historique=G.historique.slice(-24);
+    entry.innerHTML=parseResp(full);
+    window.scrollTo(0,0);autoSave();
+  }catch(err){
     cur.remove();
-    entry.innerHTML = `<p style="color:var(--rouge-vif);font-style:italic;">Erreur : ${err.message}</p>`;
+    entry.innerHTML=`<p style="color:var(--rouge-vif);font-style:italic;">Erreur : ${err.message}</p>`;
   }
-  G.enCours = false;
-  btn.disabled = false; inp.disabled = false;
-  if(window.innerWidth > 680) inp.focus();
+  G.enCours=false;btn.disabled=false;inp.disabled=false;
+  if(window.innerWidth>680)inp.focus();
 }
 
-function sendChoix(i) {
-  const t = window._choix && window._choix[i];
-  if(t) envoyerMessage(t);
-}
-
-function envoyerPremierMessage() {
-  const j = G.joueur;
+function sendChoix(i){const t=window._choix&&window._choix[i];if(t)envoyerMessage(t);}
+function envoyerPremierMessage(){
+  const j=G.joueur;
   envoyerMessage(`Je commence Dead Miles. Je suis ${j.prenom}, ${j.sexe==='homme'?'sergent, Rangers':'caporal, Military Police'}, ${j.age} ans. Je me réveille à Atlanta, plusieurs mois après le début de l'épidémie. Je dois rejoindre le signal radio Haven. Commence l'Acte 1.`);
 }
 
-// ══════════════════════════════════════════
-// ABONNEMENT
-// ══════════════════════════════════════════
-function afficherSaisieCode() {
-  const overlay = document.createElement('div');
-  overlay.id = 'code-overlay';
-  overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.8);z-index:1000;display:flex;align-items:center;justify-content:center;padding:24px;';
-  overlay.innerHTML = `
-    <div style="background:var(--bg2);border:1px solid var(--border2);padding:36px 32px;max-width:400px;width:100%;text-align:center;">
-      <div style="font-family:var(--font);font-size:20px;color:var(--texte-clair);margin-bottom:8px;">Code d'abonnement</div>
-      <div style="font-size:12px;color:var(--texte-dim);margin-bottom:24px;line-height:1.6;">Entrez le code reçu par email après votre abonnement Récit Games.</div>
-      <input id="code-input" type="text" placeholder="RG-XXXX-XXXX"
-        style="width:100%;background:var(--bg3);border:1px solid var(--border2);color:var(--texte-clair);font-family:var(--mono);font-size:16px;padding:12px;text-align:center;letter-spacing:3px;text-transform:uppercase;outline:none;margin-bottom:8px;"
-        oninput="this.value=this.value.toUpperCase()"
-      />
-      <div id="code-msg" style="font-size:12px;color:var(--rouge-vif);min-height:18px;margin-bottom:16px;"></div>
-      <button id="code-btn" onclick="validerCode()" style="width:100%;background:var(--rouge);color:#fff;border:none;padding:14px;font-family:var(--font);font-size:14px;letter-spacing:1px;cursor:pointer;margin-bottom:10px;text-transform:uppercase;">Valider</button>
-      <button onclick="document.getElementById('code-overlay').remove()" style="background:none;border:none;color:var(--texte-dim);font-size:12px;cursor:pointer;text-decoration:underline;">Annuler</button>
-    </div>`;
+function afficherSaisieCode(){
+  const overlay=document.createElement('div');
+  overlay.id='code-overlay';
+  overlay.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,0.8);z-index:1000;display:flex;align-items:center;justify-content:center;padding:24px;';
+  overlay.innerHTML=`<div style="background:var(--bg2);border:1px solid var(--border2);padding:36px 32px;max-width:400px;width:100%;text-align:center;"><div style="font-family:var(--font);font-size:20px;color:var(--texte-clair);margin-bottom:8px;">Code d'abonnement</div><div style="font-size:12px;color:var(--texte-dim);margin-bottom:24px;line-height:1.6;">Entrez le code reçu par email après votre abonnement Récit Games.</div><input id="code-input" type="text" placeholder="RG-XXXX-XXXX" style="width:100%;background:var(--bg3);border:1px solid var(--border2);color:var(--texte-clair);font-family:var(--mono);font-size:16px;padding:12px;text-align:center;letter-spacing:3px;text-transform:uppercase;outline:none;margin-bottom:8px;" oninput="this.value=this.value.toUpperCase()"/><div id="code-msg" style="font-size:12px;color:var(--rouge-vif);min-height:18px;margin-bottom:16px;"></div><button id="code-btn" onclick="validerCode()" style="width:100%;background:var(--rouge);color:#fff;border:none;padding:14px;font-family:var(--font);font-size:14px;letter-spacing:1px;cursor:pointer;margin-bottom:10px;text-transform:uppercase;">Valider</button><button onclick="document.getElementById('code-overlay').remove()" style="background:none;border:none;color:var(--texte-dim);font-size:12px;cursor:pointer;text-decoration:underline;">Annuler</button></div>`;
   document.body.appendChild(overlay);
-  setTimeout(() => document.getElementById('code-input')?.focus(), 100);
+  setTimeout(()=>document.getElementById('code-input')?.focus(),100);
 }
 
-async function validerCode() {
-  const code = (document.getElementById('code-input')?.value||'').trim().toUpperCase();
-  const msgEl = document.getElementById('code-msg');
-  const btn = document.getElementById('code-btn');
+async function validerCode(){
+  const code=(document.getElementById('code-input')?.value||'').trim().toUpperCase();
+  const msgEl=document.getElementById('code-msg');
+  const btn=document.getElementById('code-btn');
   if(!code||code.length<8){msgEl.textContent='Entrez votre code complet.';return;}
   btn.disabled=true;btn.textContent='Vérification...';msgEl.textContent='';
-  try {
-    const res = await fetch(API_CODES_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({code})});
-    const data = await res.json();
+  try{
+    const res=await fetch(API_CODES_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({code})});
+    const data=await res.json();
     if(data.valid||data.valide){
-      // Mode admin — aucune limite
-      if(data.admin){
-        G.progression.abonne=true;
-        G.progression.adminMode=true;
-        G.progression.nbChoix=0;
-        document.getElementById('screen-paywall').style.display='none';
-        document.getElementById('code-overlay')?.remove();
-        autoSave();
-        if(document.getElementById('app').style.display==='none'){
-          afficherEcran('app');majUI();
-          envoyerMessage("Le joueur vient d'activer l'accès admin. Continue l'histoire.");
-        }
-        if(msgEl)msgEl.textContent='✓ Accès admin activé. Aucune limite.';
-        return;
-      }
       G.progression.abonne=true;
-      G.progression.codeAbonnement=code;
-      G.progression.abonneJusquau=data.expire_le;
+      if(data.admin){G.progression.adminMode=true;G.progression.nbChoix=0;}
       document.getElementById('screen-paywall').style.display='none';
       document.getElementById('code-overlay')?.remove();
       autoSave();
-      if(document.getElementById('app').style.display==='none') {
-        afficherEcran('app');
-        majUI();
-        envoyerMessage("Le joueur vient de valider son abonnement. Continue l'histoire.");
-      }
-    } else {
+      if(document.getElementById('app').style.display==='none'){afficherEcran('app');majUI();envoyerMessage("Le joueur vient de valider son abonnement. Continue l'histoire.");}
+    }else{
       msgEl.textContent=data.message==='Abonnement expiré'?'Abonnement expiré. Renouvelez sur recitgames.vercel.app.':'Code invalide. Vérifiez votre email.';
       btn.disabled=false;btn.textContent='Valider';
     }
-  } catch(err){
-    msgEl.textContent='Erreur de connexion. Réessayez.';
-    btn.disabled=false;btn.textContent='Valider';
-  }
+  }catch(err){msgEl.textContent='Erreur de connexion. Réessayez.';btn.disabled=false;btn.textContent='Valider';}
 }
 
-// ══════════════════════════════════════════
-// EVENTS
-// ══════════════════════════════════════════
-document.getElementById('send-btn').addEventListener('click', () => envoyerMessage(document.getElementById('player-input').value));
-document.getElementById('player-input').addEventListener('keydown', e => {
-  if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();envoyerMessage(document.getElementById('player-input').value);}
-});
+document.getElementById('send-btn').addEventListener('click',()=>envoyerMessage(document.getElementById('player-input').value));
+document.getElementById('player-input').addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();envoyerMessage(document.getElementById('player-input').value);}});
 </script>
 </body>
 </html>
+
