@@ -19,16 +19,7 @@
   --mono:'Courier Prime','Courier New',monospace;
 }
 html,body{height:100%;background:var(--bg);color:var(--texte);font-family:var(--mono);font-size:15px;line-height:1.6;overflow-x:hidden;}
-
-/* ── INTRO ── */
-#screen-intro{
-  position:fixed;inset:0;background:var(--bg);
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  z-index:200;padding:24px;
-  background-image:
-    radial-gradient(ellipse at 50% 100%, rgba(100,20,10,0.4) 0%, transparent 60%),
-    radial-gradient(ellipse at 20% 30%, rgba(60,40,10,0.15) 0%, transparent 50%);
-}
+#screen-intro{position:fixed;inset:0;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:200;padding:24px;background-image:radial-gradient(ellipse at 50% 100%, rgba(100,20,10,0.4) 0%, transparent 60%),radial-gradient(ellipse at 20% 30%, rgba(60,40,10,0.15) 0%, transparent 50%);}
 .intro-grain{position:fixed;inset:0;z-index:201;pointer-events:none;opacity:0.04;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");background-size:150px;}
 .intro-inner{max-width:480px;width:100%;text-align:center;position:relative;z-index:202;}
 .intro-studio{font-size:10px;letter-spacing:5px;color:var(--texte-dim);text-transform:uppercase;margin-bottom:48px;animation:fi 1s ease 0.1s both;}
@@ -43,8 +34,6 @@ html,body{height:100%;background:var(--bg);color:var(--texte);font-family:var(--
 .btn-reprendre{margin-top:12px;background:transparent;border:none;color:var(--texte-dim);font-family:var(--mono);font-size:12px;cursor:pointer;text-decoration:underline;text-underline-offset:3px;animation:fi 1s ease 1s both;transition:color 0.2s;}
 .btn-reprendre:hover{color:var(--texte);}
 @keyframes fi{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
-
-/* ── SETUP ── */
 #screen-setup{display:none;position:fixed;inset:0;background:var(--bg);z-index:200;overflow-y:auto;padding:40px 20px;}
 .setup-inner{max-width:500px;margin:0 auto;}
 .setup-titre{font-family:var(--font);font-size:28px;color:var(--texte-clair);margin-bottom:6px;}
@@ -62,8 +51,6 @@ html,body{height:100%;background:var(--bg);color:var(--texte);font-family:var(--
 input[type=range]{width:100%;accent-color:var(--rouge);margin-bottom:24px;}
 .btn-setup{width:100%;background:var(--rouge);border:none;color:#fff;font-family:var(--font);font-size:15px;letter-spacing:2px;padding:16px;cursor:pointer;text-transform:uppercase;transition:background 0.2s;}
 .btn-setup:hover{background:var(--rouge-vif);}
-
-/* ── APP ── */
 #app{display:none;min-height:100vh;max-width:1200px;margin:0 auto;padding:0 12px;}
 .app-header{display:flex;align-items:center;justify-content:space-between;padding:14px 0 12px;border-bottom:1px solid var(--border);position:sticky;top:0;background:var(--bg);z-index:50;}
 .app-logo{font-family:var(--font);font-size:22px;color:var(--texte-clair);letter-spacing:4px;}
@@ -86,8 +73,6 @@ input[type=range]{width:100%;accent-color:var(--rouge);margin-bottom:24px;}
 .save-ind.saving{color:var(--or-clair);}
 .save-ind.saved{color:var(--vert-clair);}
 .main{display:block;padding:14px 0;min-height:calc(100vh - 60px);}
-
-/* ── STATS ── */
 .stats-panel{display:none;}
 .panel-bloc{background:var(--bg2);border:1px solid var(--border);padding:12px;}
 .panel-titre{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--rouge);border-bottom:1px solid var(--border);padding-bottom:6px;margin-bottom:10px;font-family:var(--mono);}
@@ -106,8 +91,6 @@ input[type=range]{width:100%;accent-color:var(--rouge);margin-bottom:24px;}
 .inv-item:hover{color:var(--texte-clair);}
 .inv-vide{font-size:11px;color:var(--texte-dim);font-style:italic;}
 .acte-display{background:var(--rouge-dim);border-left:3px solid var(--rouge-vif);padding:8px 10px;font-size:11px;color:var(--texte);line-height:1.5;}
-
-/* ── JEU ── */
 .game-panel{flex:1;display:flex;flex-direction:column;gap:10px;min-width:0;}
 #story{flex:1;background:var(--bg2);border:1px solid var(--border);padding:20px 24px;overflow-y:auto;min-height:400px;scroll-behavior:smooth;}
 .story-entry{margin-bottom:20px;animation:fadeIn 0.4s ease;}
@@ -131,8 +114,6 @@ input[type=range]{width:100%;accent-color:var(--rouge);margin-bottom:24px;}
 #send-btn{background:var(--rouge);border:none;color:#fff;font-family:var(--font);font-size:13px;letter-spacing:1px;padding:0 20px;cursor:pointer;transition:background 0.2s;flex-shrink:0;}
 #send-btn:hover{background:var(--rouge-vif);}
 #send-btn:disabled{background:var(--border);cursor:not-allowed;}
-
-/* ── PAYWALL ── */
 #screen-paywall{display:none;position:fixed;inset:0;background:var(--bg);z-index:300;align-items:center;justify-content:center;padding:24px;}
 .paywall-inner{max-width:440px;width:100%;text-align:center;}
 .paywall-badge{display:inline-block;border:1px solid var(--border2);color:var(--texte-dim);font-size:10px;letter-spacing:3px;text-transform:uppercase;padding:5px 14px;margin-bottom:24px;}
@@ -148,7 +129,6 @@ input[type=range]{width:100%;accent-color:var(--rouge);margin-bottom:24px;}
 .btn-paywall:hover{background:var(--rouge-vif);}
 .paywall-deja{font-size:12px;color:var(--texte-dim);cursor:pointer;text-decoration:underline;text-underline-offset:3px;}
 .paywall-deja:hover{color:var(--texte);}
-
 @media(max-width:680px){
   .main{flex-direction:column;}
   .stats-panel{width:100%;position:static;max-height:none;flex-direction:row;flex-wrap:wrap;gap:8px;}
@@ -167,7 +147,6 @@ input[type=range]{width:100%;accent-color:var(--rouge);margin-bottom:24px;}
 
 <div class="intro-grain"></div>
 
-<!-- INTRO -->
 <div id="screen-intro">
   <div class="intro-inner">
     <div class="intro-studio">Récit Games · Roman Survival Interactif</div>
@@ -184,12 +163,10 @@ input[type=range]{width:100%;accent-color:var(--rouge);margin-bottom:24px;}
   </div>
 </div>
 
-<!-- SETUP -->
 <div id="screen-setup">
   <div class="setup-inner">
     <div class="setup-titre">Qui êtes-vous ?</div>
     <div class="setup-sous">Vous êtes un vétéran. Revenu d'Afghanistan il y a trois semaines. L'épidémie a commencé pendant votre vol retour. Atlanta est tombée avant que vous touchiez le sol.</div>
-
     <label class="setup-label">Votre profil</label>
     <div class="sexe-grid">
       <div class="sexe-card sel" id="card-homme" onclick="choisirSexe('homme',this)">
@@ -210,7 +187,6 @@ input[type=range]{width:100%;accent-color:var(--rouge);margin-bottom:24px;}
   </div>
 </div>
 
-<!-- APP -->
 <div id="app">
   <div style="background:#090807;border-bottom:1px solid var(--border);padding:6px 12px;text-align:center;">
     <a href="https://recitgames.vercel.app" style="color:var(--texte-dim);font-size:10px;text-decoration:none;letter-spacing:3px;font-family:var(--mono);">&#9664; RÉCIT GAMES</a>
@@ -224,7 +200,6 @@ input[type=range]{width:100%;accent-color:var(--rouge);margin-bottom:24px;}
     </div>
   </header>
 
-  <!-- Panneau déroulant -->
   <div id="dm-panel">
     <div class="dm-panel-inner">
       <div>
@@ -306,7 +281,6 @@ input[type=range]{width:100%;accent-color:var(--rouge);margin-bottom:24px;}
   </div>
 </div>
 
-<!-- PAYWALL -->
 <div id="screen-paywall">
   <div class="paywall-inner">
     <div class="paywall-badge">Fin de l'extrait gratuit</div>
@@ -541,17 +515,26 @@ Acte 7 — Haven en Vue : convergence, les pillards reviennent.
 Acte 8 — Haven : révélation.
 Changement d'acte : [ ACTE: X ] | Changement de lieu : [ LIEU: Nom du lieu ]
 
-=== FORMAT OBLIGATOIRE ===
+=== FORMAT RÉPONSE — RÈGLE ABSOLUE ET NON NÉGOCIABLE ===
+Chaque réponse DOIT suivre exactement cette structure, sans exception :
+
 Narration (120-180 mots)
 
 [ Faim -X ] [ Eau -X ] (et autres tags ressources si pertinent)
 
 [ CHOIX ]
-1 — option
-2 — option
-3 — option
+1 — option précise
+2 — option précise
+3 — option précise
 
-Les choix doivent refléter EXACTEMENT ce que le joueur possède réellement dans son inventaire.`.trim();
+INTERDICTIONS STRICTES :
+- Ne JAMAIS omettre le bloc [ CHOIX ]
+- Ne JAMAIS utiliser autre chose que le tiret long — (—) entre le numéro et le texte
+- Ne JAMAIS numéroter autrement que 1, 2, 3
+- Ne JAMAIS omettre [ Faim -X ] et [ Eau -X ] — ces deux balises sont obligatoires à chaque réponse
+- Les balises ressources vont TOUJOURS avant [ CHOIX ], jamais après
+- Ne JAMAIS mettre de texte après les 3 choix
+- Les choix doivent refléter EXACTEMENT ce que le joueur possède réellement dans son inventaire`.trim();
 }
 
 function parseResp(texte){
@@ -619,7 +602,6 @@ function triggerDeath(cause){
 function reprendreDepuisCheckpoint(){document.getElementById('story').innerHTML='';majUI();envoyerMessage('Je reprends conscience. Résume brièvement ma situation actuelle — lieu, état physique — et propose-moi mes prochains choix.');}
 function recommencerPartie(){localStorage.removeItem('dm_save_v1');location.reload();}
 
-// ── STREAMING via proxy Vercel ──
 async function envoyerMessage(msg){
   if(G.enCours)return;
   G.enCours=true;
